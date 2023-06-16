@@ -1,0 +1,5 @@
+uwsgi
+paste
+python-multipart
+pyyaml
+tomli
