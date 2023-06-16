@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<meta charset="utf-8">
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow, noarchive, noimageindex">
+<style>
+body { 
+   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif; 
+}
+</style>	
+</head>
+
+<body>
+
+<script src="https://code.j5.org/js/jquery-3.5.0.min.js"></script>
+
+<script>
+
+    var tweets = new Array();
+    $.ajax({ url: "/dbfun.cgi",
+        async: false,
+        dataType: 'json',
+        success: function(data) { tweets = data.tweets; }
+    });
+    console.log(`Got ${tweets.length} tweets`);
+
+    const formatTime = (date_time) => {
+    	  let time = date_time.split(" ")[1]
+    	  let hr = time.split(":")[0];
+    	  let mins = time.split(":")[1];
+        const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+        return new Date(date_time).toLocaleString('en-US', options);
+    }
+
+    const formatDate = (date_time) => {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' }
+        return new Date(date_time).toLocaleDateString('en-US', options);
+    }
+
+    for (let i = 0; i < tweets.length; i++) {
+        let tweet = tweets[i];
+        document.writeln(formatTime(tweet.date_time) + " - ");
+        document.writeln(formatDate(tweet.date_time) + "<BR>");
+    }
+
+</script>
+
+</body>
+</html>
+
