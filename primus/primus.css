@@ -1,0 +1,22 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	background-color: black;
+	font-family: arial, helvetica;
+}
+	
+p, h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+	color: #FFCC66;
+	a:link { color: #336699; }
+	a:visited { color: #336699; }
+	a:active { color: #CC0033; };
+	a:hover { color: #CC0033; };
+}
+
+table, th, td {
+	border: 1px;
+	text-align: left;
+}
+
+img { border: 0; }

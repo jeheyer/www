@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Graffiti Board</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <link rel="stylesheet" type="text/css" href="css/bastards.css">
+</head>
+<body>
+
+<script src="js/ajax-functions.js"></script>
+
+<div id='board'>
+</div>
+
+<script>
+
+// Parse GET parameters
+const get_params = {}
+location.search.substr(1).split("&").forEach(function(item) {
+  get_params[item.split("=")[0]] = decodeURIComponent(item.split("=")[1])
+})
+
+// Get the name name of the board
+var wall = "";
+if (get_params["wall"])
+  wall = get_params["wall"];
+
+(async() => {
+
+  const ajax_url = `/python/graffiti/primus/${wall}`;
+
+  MakeAjaxCall(ajax_url).then(data => {
+    let html = "";
+    for (const entry of data) {
+      html += `<p>On <kbd>${entry.timestamp}</kbd>, <b>${entry.name}</b> wrote:<br></p>`;
+      html += `<blockquote>${entry.text}</blockquote><hr>\n` ;
+    }
+    // Fill in the HTML
+    document.querySelector("#board").innerHTML = html;
+  }).catch(console.log);
+
+})();
+
+</script>
+
+</body>
+</html>

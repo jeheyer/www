@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Poll Results</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+</head>
+<body>
+
+<script src="js/ajax-functions.js"></script>
+
+<!-- Begin data table -->
+<table id="results_table">
+<caption></caption>
+<thead id="table_header"></thead>
+<tbody></tbody>
+<tfoot id="table_footer"></tfoot>
+</table>
+<!-- End data table -->
+
+<script>
+
+function compareVotes(a, b) {
+  return parseInt(a.num_votes) - parseInt(b.num_votes);
+}
+
+// Parse GET parameters
+const get_params = {}
+location.search.substr(1).split("&").forEach(function(item) {
+  get_params[item.split("=")[0]] = decodeURIComponent(item.split("=")[1])
+})
+
+// Get the name name of the Poll
+var poll_name = "";
+if (get_params["poll_name"])
+  poll_name = get_params["poll_name"];
+
+// Set appropriate CSS file
+let css_file = "bb.css";
+if (poll_name == "albums")
+  css_file = "lb.css";
+if (poll_name == "videos")
+  css_file = "pp.css";
+let css = document.createElement('link');
+css.rel = ' stylesheet';
+css.href = 'css/' + css_file;
+document.head.appendChild(css);
+
+// Set the Table header info
+let poll_desc = "Poll Results";
+if (get_params["poll_desc"]) 
+  poll_desc = get_params["poll_desc"];
+
+(async() => {
+
+  let table = document.getElementById("results_table");
+
+  // Fill Table Header
+  let header = table.createTHead();
+  let row = header.insertRow(0);
+  let cell = row.insertCell(0);
+  cell.innerHTML = `<b>${poll_desc}</b>`;
+
+  const ajax_url = "/python/polls/primus/" + poll_name;
+
+  MakeAjaxCall(ajax_url).then(poll_results => {
+
+    // Sort them by most popular first
+    poll_results.sort(compareVotes);
+
+    // Tally total votes
+    let total_votes = 0;
+    for (const row of poll_results) {
+      total_votes += parseInt(row.num_votes);
+    }
+
+    // Add footer showing total number of votes
+    let footer = table.createTFoot();
+    row = footer.insertRow(0);     
+    cell = row.insertCell(0);
+    cell.innerHTML = total_votes + " votes so far";
+
+    // Fill Table Body
+    for (let i = 0; i < poll_results.length; i++) {
+      tr = table.insertRow(0);
+      let choice_cell = tr.insertCell(0);
+      choice_cell.innerHTML = poll_results[i].full_name
+      let votes_cell = tr.insertCell(1);
+      votes_cell.innerHTML = poll_results[i].num_votes + " votes";    
+      let percent_cell = tr.insertCell(2);
+      let percentage = Math.round(1000 * parseInt(poll_results[i].num_votes) / total_votes) / 10;
+      percent_cell.innerHTML = percentage + "%";
+    }
+
+  }).catch(console.log);
+
+})();
+
+</script>
+
+</body>
+</html>

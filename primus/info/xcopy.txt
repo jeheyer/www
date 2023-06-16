@@ -1,0 +1,32 @@
+
+Here's what to:
+
+1. Get you computer in DOS mode, either by restarting in DOS or using a
+DOS boot disk.
+
+2. Go to your CD-ROM drive (D: on most systems), and type "dir".  If you
+get a Bunch of Files, you're OK.  This should work for any ATAPI CD-ROM,
+I'm not too sure about NEC and Toshibas though.
+
+3. Use the XCOPY command to copy all the CD-ROM data to your hard drive:
+	XCOPY D:\*.* C:\TALES /S 
+This command assumed D: was your CD-ROM drive and you wanted to copy all
+the stuff on the CD to C:\TALES
+
+4. Use the same command for the hidden DATA/ directory:
+	XCOPY D:\DATA\*.* C:\TALES\DATA\ /S
+
+5. Run the install program off your hard drive; it should install OK.
+
+6. Run Tales From the Punchbowl!  When it asks you get the error message
+and it asks you for the DXR file, don't freak!  Just type in something
+like C:\TALES\DATA\STARTUP.DXR and everything should be cool.
+
+I have a Mitsumi 12x, and now can run the CD under Windows 95 and
+Windows NT 4.0.  The only drawback is that I have to change my res. to 
+640x480 (I usually run 1280x1024), but thanks to the dynamic display
+settings it's not too cumbersome.  If you have questions, just send me
+an e-mail.  
+
+--John
+primus@jfive.com

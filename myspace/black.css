@@ -1,0 +1,45 @@
+<STYLE>
+
+a, a.man, a:link, a:visited {font-family: Arial, Helvetica; color:0000FF; font-size:10pt; font-weight:bold; text-decoration:none;
+font-style:italic} 
+
+a:active, a:hover{font-family:comic sans ms, arial, times new
+roman;color:00FFFF; font-size:14pt; font-weight:bold; text-decoration:underline;
+font-style:italic;}
+
+td, table, tr, span, li, p, div, textarea, DIV
+{font-family:comic sans ms, arial, times new roman;color:0066FF;
+font-weight:normal; font-decoration:none;
+font-style:normal;background-color:transparent} 
+
+td, li, p, div, textarea
+{font-family:comic sans ms, arial, times new roman;border-color:0000FF}
+table{border-color:0099FF}
+
+a.navbar{font-family:comic sans ms, arial, times new
+roman;font-size:8pt; font-weight:normal} a.navbar:link{color:FFFFFF;}
+a.navbar:active{color:00FFFF;} a.navbar:visited{color:FFFFFF;}
+a.navbar:hover{color:00FFFF;}a.searchlinkSmall{font-family:comic sans ms, arial,
+times new roman;font-size:8pt; text-decoration:none; font-weight:normal;}
+a.searchlinkSmall:link{color:FFFFFF} a.searchlinkSmall:active{color:00FFFF}
+a.searchlinkSmall:visited{color:FFFFFF}
+a.searchlinkSmall:hover{color:00FFFF}body{font-family:comic sans ms, arial,
+times new roman;background-color:000000;background-image:url();
+background-position:0%; background-repeat:repeat;
+background-attachment:fixed;}.nametext{font-family:comic sans ms, arial, times
+new roman;font-size:10pt;color:0099FF;
+font-weight:none;}.blacktext10{font-family:comic sans ms, arial, times new
+roman;font-size:10pt; color:0099FF;
+font-weight:normal;}.blacktext12{font-family:comic sans ms, arial, times new
+roman;font-size:10pt; color:0099FF; font-weight:normal;}.btext, .itext,
+.text{font-family:comic sans ms, arial, times new roman;font-size:10pt;
+color:0099FF; font-weight:none;}.orangetext15{font-family:comic sans ms, arial,
+times new roman;font-size:10pt; color:0099FF;
+font-weight:none;}.lightbluetext8{font-family:comic sans ms, arial, times new
+roman;font-size:10pt; color:0099FF;
+font-weight:none;}.tmz_imp{font-family:arial;color:FF0000;font-weight:bold}
+
+a img {border-color:00FFFF; border-width:2px;border-style:solid;filter:Alpha(Opacity=60)}
+a:hover img {border-color:0000FF;border-width:2px;border-style:solid;filter:none}
+
+</STYLE>

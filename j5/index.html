@@ -1,0 +1,38 @@
+<!doctype html>
+<HTML LANG="en">
+<HEAD>
+<TITLE>J5</TITLE>
+<META NAME="p:domain_verify" content="f3e7c39ee602f4e3de030d33ce07645a" />
+<META CHARSET="utf-8" />
+<META NAME=KEYWORDS CONTENT="J5">
+<META NAME="description" CONTENT="J5" />
+<META NAME="robots" CONTENT="index, follow, archive, imageindex">
+<STYLE> table { width: 100%; } td { text-align: center; }</STYLE> 
+</HEAD>
+<BODY>
+<SCRIPT>
+	
+  let SplashImages = [];
+  SplashImages[0] = {image:"lowlife.png", color:"black"};
+  SplashImages[1] = {image:"brian.jpg", color:"white"};
+  SplashImages[2] = {image:"jackson5.jpg", color:"white"};
+  SplashImages[3] = {image:"johnny5.jpg", color:"grey"};
+  
+  let i = Math.floor(Math.random() * SplashImages.length);
+
+  document.write(`<BODY BGCOLOR='${SplashImages[i].color}'>\n`);
+
+</SCRIPT>
+<TABLE VALIGN=CENTER>
+<TR>
+<TD>
+<A HREF="http://johnnylingo.wordpress.com/">
+<SCRIPT>
+  document.write(`<IMG SRC='graphics/${SplashImages[i].image}' ALT='here' BORDER=0>`);
+</SCRIPT>
+</A>
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

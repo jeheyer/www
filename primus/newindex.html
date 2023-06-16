@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>John the Fisherman's Bastard Boat</title>
+<meta charset="utf-8" />
+<META NAME="keywords" CONTENT="primus, les, claypool, ler, larry, lalonde, brain, mantia, tim, alexander, brown album, john the fisherman">
+<META NAME="author" CONTENT="J5 - http://www.j5.org">
+<META NAME="generator" CONTENT="UltraEdit 32 Text Editor">
+<link rel="stylesheet" type="text/css" href="primus.css">
+</head>
+
+<body>
+
+<p><a href="boat.htm"><img src="pictures/john.gif" alt="ENTER"></a></p>
+<p><a href="text.htm">Text Only</a></p>
+
+<!-- begin webring code -->
+<script>
+
+	function CheesyPrimusRing(Action) {
+
+		var id = 3;
+
+		var url = "http://www.webring.org/cgi-bin/webring?ring=primus";
+		var myindex = Action.selectedIndex;
+		var action = Action.options[myindex].value;
+
+		if (action == "join")
+			url = "http://www.ram.org/music/primus/misc/primus_ring.html";
+		else if (action == "index")
+			url += "&index";
+		else if (action == "random")
+			url += "&random";
+		else 
+			url += "&id=" + id + "&" + action;
+		
+		Action.selectedIndex = 0;
+		window.location.href = url;
+		return true;
+	}
+	
+	// Write the Form
+	document.writeln("<TABLE ALIGN=CENTER>\n<TD>\n");
+	document.writeln("<FORM>\n<SELECT onChange=\"CheesyPrimusRing(this);\">");
+	document.writeln("<OPTION SELECTED> The Cheesy Primus Ring");
+	document.writeln("\t<OPTION VALUE=\"next\"> Next");
+	document.writeln("\t<OPTION VALUE=\"skip\"> Skip");
+	document.writeln("\t<OPTION VALUE=\"prev\"> Previous");
+	document.writeln("\t<OPTION VALUE=\"join\"> Join");
+	document.writeln("\t<OPTION VALUE=\"index\"> Index");
+	document.writeln("\t<OPTION VALUE=\"random\"> Random");
+	document.writeln("</SELECT>\n</FORM>\n</TD>\n</TABLE>");
+
+// -->
+<!--
+/*
+// -->
+</script>
+
+The Cheesy Primus Ring<br>
+<small>
+<a href="http://www.ram.org/music/primus/misc/primus_ring.html">JOIN</a> |
+<a href="http://www.webring.org/cgi-bin/webring?ring=primus&id=3&next">NEXT</a> | 
+<a href="http://www.webring.org/cgi-bin/webring?ring=primus&id=3&skip">SKIP</a> | 
+<a href="http://www.webring.org/cgi-bin/webring?ring=primus&id=3&prev">PREV</a>
+</small>
+<!-- end webring code -->
+
+<!-- begin webring code -->
+<h3>
+<img src="graphics/blank.gif" usemap="#ring" alt="The Cheesy Primus Ring">
+<map name="ring">
+<AREA HREF="http://www.webring.org/cgi-bin/webring?ring=primus&id=3&next" ALT="Next">
+<AREA HREF="http://www.webring.org/cgi-bin/webring?ring=primus&id=3&skip" ALT="Skip">
+<AREA HREF="http://www.webring.org/cgi-bin/webring?ring=primus&id=3&prev" ALT="Previous">
+<AREA HREF="http://www.ram.org/music/primus/misc/primus_ring.html"        ALT="Join">
+<AREA HREF="http://www.webring.org/cgi-bin/webring?ring=primus&index"     ALT="Index">
+<AREA HREF="http://www.webring.org/cgi-bin/webring?ring=primus&random"    ALT="Random">
+</map>
+</h3>
+<!-- end webring code -->
+
+<p>Primus, Sucks, Les Claypool, Larry LaLonde, Brain, Tim "Herb" Alexander, Brown Album, John the Fisherman</p>
+
+</body>
+</html>

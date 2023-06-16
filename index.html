@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang='en'>
+<head>
+</head>
+<boody>
+<h1 id='title'></h1>
+<ul id='info_list'>
+</ul>
+<script>
+
+  document.getElementById("title").innerHTML = location.hostname
+
+  const list = document.getElementById('info_list');
+  let list_item = document.createElement('li');
+  list_item.appendChild(document.createTextNode(navigator.userAgent));
+  list.appendChild(list_item)
+
+</script>
+</body>
+</html>

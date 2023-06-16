@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head><title>The Pointless Page: Videos</title>
+<meta charset="utf-8" />
+<meta name="description" content="Primus Bootlegs, mp3" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow, archive, imageindex">
+<link rel="stylesheet" type="text/css" href="css/pp.css">
+</head>
+<body>
+<header>
+<a href="main.html" target="_parent"><IMG SRC="images/robot-on.gif" ALT="The Pointless Page"></a>
+<h1>Videos</h1>
+<ol id="video_list">
+</ol>
+<form method=post id="poll" action="/python/poll_vote">
+<input type=hidden name="db_name" value="primus">
+<input type=hidden name="poll_name" value="videos">
+<input type=hidden name="poll_desc" value="What is Your Favorite Video?">
+<input type=hidden name="poll_url">
+<fieldset>
+<legend>What is your favorite Video?</legend>
+<select name="choice_id" id="video_selector">
+<option value="0">&nbsp;</option>
+</select>
+</fieldset>
+<input type="submit" NAME="action" VALUE="Vote">
+<input type="submit" NAME="action" VALUE="View Results">
+</form>
+<script>
+  let page = "pollresults.html";
+  let split = document.location.pathname.split("/");
+  let dir = split.slice(0, split.length - 1).join("/");
+  let url = location.protocol + "//" +  location.hostname + dir + "/" + page;
+  document.getElementsByName("poll_url")[0].value = url;
+</script>
+
+<script src="js/ajax-functions.js"></script>
+<script>
+
+(async() => {
+
+  const ajax_url = "/python/get_table/primus/videos";
+
+  MakeAjaxCall(ajax_url).then(data => {
+
+    const selector = document.getElementById('video_selector');
+
+    const list = document.getElementById('video_list');
+
+    for (const obj of data) {
+
+      let list_item = document.createElement('li');
+      list_item.appendChild(document.createTextNode(obj.full_name));
+      list.appendChild(list_item)
+
+      let option = document.createElement("option");
+      option.value = obj.id;
+      option.text = obj.full_name;
+      selector.add(option);
+    }
+  }).catch(console.log);
+
+})();
+
+</script>
+</header>
+<TABLE>
+<TR>
+<TD><A id="john" href="/video/excerpt-John_The_Fisherman.mov"><IMG SRC="graphics/john.jpg" ALT="John the Fisherman"></A><BR></TD>
+<td><B>John the Fisherman</B> was Primus's first official video (a demo for <B>Too 
+Many Puppies</B> exists, but was never officially released).  Shot on Les's Fishing Boat, 
+it featured a cameo by Kirk Hammett and Ler's Purple Hair.  This video 
+appears on the <A HREF="cheesvid.htm">Cheesy Home Video</A> with an introduction 
+by Les of "I Don't Wanna Introduce The video for John the Fisherman...Fuck That!".</TD>
+</TR>
+<TR>
+<TD><IMG  id="jerry" SRC="graphics/jerry.jpg" ALT="Jerry was a Racecar Driver"><BR></TD>
+<td><B>Jerry Was a Racecar Driver</B> featered Primus in concert 
+at the legendary Phoenix Theater.  Les wears his classic white Long Johns, and needless 
+to say, the moshing at the concert is quite heavy.  The introduction shows
+the infamous <A HREF="http://www.primussucks.com">Bob Cock</A> getting an order of Nachos, only to drop 
+them after a collision with <A HREF="lalonde.htm">Ler</A> on a skateboard.</TD>
+</TR>
+<TR>
+<TD><A id="tommy" href="/video/excerpt-Tommy_The_Cat.mov"><IMG SRC="graphics/tommy.jpg" ALT="Tommy the Cat"></A><BR></TD>
+<td><P><B>Tommy the Cat</B> is possibly Primus's most bizarre video.  
+Les plays a bartender serving milk, which is mixed with the rest of the Band and a cartoon.</TD>
+</TR>
+<TR>
+<TD><A id="mud" href="/video/excerpt-My_Name_Is_Mud.mov"><IMG SRC="graphics/mud.jpg" ALT="My Name is Mud"></A><BR></TD>
+<td><B>My Name is Mud</B> was the first Primus video to get heavy 
+play on MTV, and likewise was reviewed by <A HREF="http://fred.net/cheesy/beavis.shtml">Beavis and 
+Butt-head</A>.  Many fans were introduced to Les Claypool's hard, slappin' bass and 
+masterful story telling with this video; the song was a tribute to the director of <U>Evil Dead</U>.</TD>
+</TR>
+<TR>
+<TD><A id="dmv"><IMG SRC="graphics/dmv.jpg" ALT="DMV"></a></TD>
+<td>Like Jerry, the video for <B>DMV</B> takes place mostly in concert. 
+A great example of the sheer energy of Primus, Les does the famous "Primus Jig" 
+towards the end.  MTV bleeped out both "THC" and "Smoke", foreshadowing future censorship 
+for the <A HREF="#wynona">Wynona</A> video two years later.</TD>
+</TR>
+<TR>
+<TD><IMG id="krinkle" SRC="graphics/krinkle.jpg" ALT="Mr. Krinkle"><BR></TD>
+<td>Very few have been lucky enough to see the video for <B>Mr. Krinkle</B>, 
+as it is by far the least played.  As Les put it, "I put my heart and soul into that video, 
+and they played it like two times."  The video featured Les in a pig suit 
+playing the upright with all types of weird things going on in the background.</TD>
+</TR>
+<TR>
+<TD><IMG id="riddles" SRC="graphics/riddles.jpg" ALT="Riddles Are Abound Tonight"><BR></TD>
+<td>Simply put, <B>Riddles Are Abound Tonight</B> was a weird video.  Dressed in 
+blue bodysuits and ridding stationary bicyles, Sausage performs the song while hovering above a 
+Disco dancer and a 1700's ball.  Thanks to Beavis and Butt-head, Sausage became better known 
+as the "Seminifious Tubloidial Buttnoids", and the video was responsible for insiring Mike Judge 
+to create <EM>The Great Cornholio</EM>.</TD>
+</TR>
+<TR>
+<TD><A id="wynona"><IMG SRC="graphics/wynona.jpg" ALT="Wynona's Big Brown Beaver"></a><BR></TD>
+<td><B>Wynona's Big Brown Beaver</B> is considered by most to be the 
+best video.  Dressed as Cowboys in plastic suits resembling the Duracell Family, it mixed 
+the threesome's adventures with cartoons.  Unfortuneately, MTV both censored the video 
+and restricted its playing time to past midnight, much to the dismay of the band.
+Despite this, it was still was the most requested video of 1995.</TD>
+</TR>
+<TR>
+<TD><A id="pacyderm" href="/video/excerpt-Southbound_Pachyderm.mov"><IMG SRC="graphics/pacyderm.jpg" ALT="Southbound Pacyderm"></A><BR></TD>
+<td><B>Southbound Pacyderm</B> was done almost entirely in claymation.  
+In the video, a safari hunter persues a flying Elephant and Hippo who are aided by a scientist.  
+Like <B>Mr. Krinkle</B>, this video was played only a few times after its premeire.</TD>
+</TR>
+<TR>
+<TD><A id="beef" href="/video/excerpt-Shake_Hands_With_Beef.mov"><IMG SRC="graphics/beef.jpg" ALT="Shake Hands with Beef"></A><BR></TD>
+<td><B>Shake Hands with Beef</B> marked the debut of 
+<A HREF="brain.htm">Brain</A> in a Primus video.  The video took place at a 
+trailer park barbeque, with the guys as little insects performing on a garbage can lid.  Ler flew during his solo, 
+but Les was fried by a bug zapper at the end.</TD>
+</TR>
+<TR>
+<TD><A id="falls" href="/video/excerpt-Over_The_Falls.mov"><IMG SRC="graphics/falls.jpg" ALT="Over the Falls"></A><BR></TD>
+<td><B>Over the Falls</B> reflected the old-fashioned, acoustic 
+feel of 1997's <EM>Brown Album</EM>.  Dressed in early 1900's duds, the band performs as several 
+Whoudina-bees attempt to cross Niagara Falls in homemade contraptions.  Many of the tools came from Les's 
+Grandfather's (Captain Peirce) garage.</TD>
+</TR>
+<TR>
+<TD><A id="buzzards"><IMG SRC="graphics/buzzards.jpg" ALT="Buzzards of Green Hill"></A><BR></TD>
+<td>The <B>Buzzards of Green Hill</B> video 
+perhaps stayed closest to the song.  It primary shows Les and the Frog Brigade displaying the lyrics 
+on cue cards, but mixes in "home movie" shots of Green Hill Road and the Buzzards that patrol it, and 
+a little of Les playing.  
+</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>

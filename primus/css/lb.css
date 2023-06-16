@@ -1,0 +1,15 @@
+html,body         { height: 100%; background-color: black; color: white; }
+p,legend,dl,dt,dd { color: white; font-family: Arial; text-align: left; }
+a:link            { color: #CC6600; }
+a:visited         { color: #996600; }
+a:active          { color: #CC0033; }
+h1,h2,h3,h4       { color: #FFFFFF; font-family: Courier;}
+ul,ol             { list-style-type:none; font-family: Arial; }
+table             { width: 100%; border-spacing: 2px; border-collapse: collapse; }
+th,thead          { font-family: Courier; text-align: center; font-size: 100%; }
+td,tfood          { font-family: Arial; text-align: left; padding: 10px; }
+body {
+  color: white;
+  height: 100%; 
+  background-image: url('../images/skeeter.jpg'); background-repeat: repeat;
+}

@@ -1,0 +1,35 @@
+ION has a web site (http://www.ionmusic.com), with a tech support section, 
+however they seem rather unwilling to refund the CDs when that appears to be 
+the only solution.  I tried using an older version of Windows 95 with a Hitachi 
+ATAPI CD-ROM drive, and it erased it from my BIOS.  So, the best solution may be 
+to write (not e-mail) ION and ask them for a new CD:
+
+
+
+You may find it helpful to read or include this e-mail I got 
+from Hitachi's CD-ROM tech support:
+
+------------------------------------------------------
+Here is the information we have on Enhanced CD's:
+     
+     According to EMI Records, some current Enhanced CD-ROM's were 
+     manufactured using the Pre-Gap format.  Most of those CD-ROM titles 
+     will perform correctly if the CD-ROM drive is using real mode (DOS) 
+     drivers, which means that they will work fine in Windows 3.1 or 3.11. 
+     The version of Windows 95 that you get when you purchase a new 
+     computer does not include support for Pre-Gap formatted Enhanced 
+     CD-ROM's, although some earlier versions of Windows 95 drivers (which 
+     is what you get when you buy 95 at the store) will allow them to play. 
+     95 does include support for CD-ROM discs using the newer Blue Book 
+     format (multi-session), such as the Microsoft Music Sampler. If your 
+     CD-ROM disc does not play properly in your CD-ROM drive, it is 
+     probably a Pre-Gap CD.  You should contact the publisher of the CD-ROM 
+     and ask for an updated version of the CD-ROM that conforms to the new 
+     Blue Book format.
+     
+     If there is anything else that I can help you with, let me know.
+     
+     Regards,
+     
+     Jim Keeton
+------------------------------------------------------

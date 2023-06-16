@@ -1,0 +1,276 @@
+<HTML>
+<HEAD><TITLE>The Bastard Vote</TITLE>
+
+<BODY BGCOLOR="000000" BACKGROUND="graphics/bastards.jpg" TEXT="FFFFFF" LINK="CC6600" VLINK="996600" ALINK="CC0033">
+
+<H1><TT>The Bastard Vote</TT></H1>
+<P><FONT FACE="Arial, Helvetica">Here the chance for you to choose your top 10 Primus, Les Claypool, and 
+Sausage Songs of all time!  Don't worry too much about getting things in exact order: if your tastes change, just come 
+back and vote again!</FONT></P>
+<P><FONT FACE="Arial, Helvetica"><B>Instructions:</B> This JavaScript form will only work under <BLINK>Netscape 4.0</BLINK> and (for 
+the most part) Internet Explorer 3.  People with other browsers should use the less convienient <A HREF="formvote.htm">Standard Voting Form</A>.</FONT></P>
+
+<OL>
+<LI><TT>Choose your favorite songs by clicking on the pull-down menus at the right.  The radio button shows which 
+place song you are selecting.  </TT>
+<LI><TT>A first place vote gets 10 points, a second place vote gets 9 points, etc.</TT>
+<LI><TT>If you want to change a selection, click on the radio button next to the song you want to change.</TT>
+<LI><TT>When you're done, hit the 'Submit' button.</TT>
+</OL>
+
+<P><FONT FACE="Arial, Helvetica">The Script's <A HREF="/java/scripts/vote.js">source</A> can be found here.</FONT></P>
+
+<HR>
+<FORM NAME="voteform" METHOD="POST" ACTION="/cgi-jfive/vote.cgi">
+<P><FONT FACE="Arial, Helvetica"><A HREF="/cgi-jfive/vote.cgi">View</A> the results.</FONT></P>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+	// Begin Defining Your Data Here
+
+	Album1 = new Album('Suck on This', 2);
+	Album1[1]  = 'The Heckler';
+	Album1[2]  = 'Jellikit';
+
+	Album2 = new Album('Frizzle Fry', 13);
+	Album2[1]  = 'To Defy the Laws of Tradition';
+	Album2[2]  = 'Ground Hog\'s Day';
+	Album2[3]  = 'Too Many Puppies';
+	Album2[4]  = 'Mr. Knowitall';
+	Album2[5]  = 'Frizzle Fry';
+	Album2[6]  = 'John the Fisherman';
+	Album2[7]  = 'You Can\'t Kill Michael Malloy';
+	Album2[8]  = 'The Toys Go Winding Down';
+	Album2[9]  = 'Puddin Time';
+	Album2[10] = 'Sathington Willoby';
+	Album2[11] = 'Spegetti Western';
+	Album2[12] = 'Harold of the Rocks';
+	Album2[13] = 'To Defy';
+
+	Album3 = new Album('Sailing the Seas of Cheese', 13);
+	Album3[1]  = 'Seas of Cheese';
+	Album3[2]  = 'Here Come the Bastards';
+	Album3[3]  = 'Sgt. Baker';
+	Album3[4]  = 'American Life';
+	Album3[5]  = 'Jerry was a Racecar Driver';
+	Album3[6]  = 'Eleven';
+	Album3[7]  = 'Is it Luck?';
+	Album3[8]  = 'Grandad\'s Little Ditty';
+	Album3[9]  = 'Tommy the Cat';
+	Album3[10] = 'Sathington Waltz';
+	Album3[11] = 'Those Damned Blue-Collar Tweekers';
+	Album3[12] = 'Fish On';
+	Album3[13] = 'Los Bastardos';
+
+	Album4 = new Album('Miscellaneous Debris', 5);
+	Album4[1] = 'Intruder';
+	Album4[2] = 'Making Plans for Nigel';
+	Album4[3] = 'Sinister Exaggerator';
+	Album4[4] = 'Tippi Toes';
+	Album4[5] = 'Have a Cigar';
+
+	Album5 = new Album('Pork Soda', 15);
+	Album5[1]  = 'Pork Chop\'s Little Ditty (1)';
+	Album5[2]  = 'My Name Is Mud';
+	Album5[3]  = 'Welcome to This World';
+	Album5[4]  = 'Bob';
+	Album5[5]  = 'DMV';
+	Album5[6]  = 'The Ol\' Diamond Back Sturgeon';
+	Album5[7]  = 'Nature Boy';
+	Album5[8]  = 'Wounded Knee';
+	Album5[9]  = 'Pork Soda';
+	Album5[10] = 'The Pressman';
+	Album5[11] = 'Mr. Krinkle';
+	Album5[12] = 'The Air is Getting Slippery';
+	Album5[13] = 'Hamburger Train';
+	Album5[14] = 'Pork Chop\'s Little Ditty (2)';
+	Album5[15] = 'Hail Santa';
+
+	Album6 = new Album('Riddles Are Abound Tonight', 9);
+	Album6[1] = 'Prelude to Fear';
+	Album6[2] = 'Riddles Are Abound Tonight';
+	Album6[3] = 'Here\'s to the Man';
+	Album6[4] = 'Shattering Song';
+	Album6[5] = 'Toyz 1988';
+	Album6[6] = 'Temporary Phase';
+	Album6[7] = 'Girls for Single Men';
+	Album6[8] = 'Recreating';
+	Album6[9] = 'Caution Should be Used While Driving...';
+
+	Album7 = new Album('Tales From the Puncbowl', 13);
+	Album7[1]  = 'Professor Nutbutter\'s House of Treats';
+	Album7[2]  = 'Mrs. Blaileen';
+	Album7[3]  = 'Wynona\'s Big Brown Beaver';
+	Album7[4]  = 'Southbound Pachyderm';
+	Album7[5]  = 'Space Farm';
+	Album7[6]  = 'Year of the Parrot';
+	Album7[7]  = 'Hellbound 17 1/2 (theme from)';
+	Album7[8]  = 'Glass Sandwich';
+	Album7[9]  = 'Del Davis Tree Farm';
+	Album7[10] = 'De Anza Jig';
+	Album7[11] = 'On the Tweek Again';
+	Album7[12] = 'Over the Electric Grapevine';
+	Album7[13] = 'Captain Shiner';
+
+	Album8 = new Album('Highball With the Devil', 15);
+	Album8[1]  = 'Running the Gauntlet';
+	Album8[2]  = 'Holy Mackerel';
+	Album8[3]  = 'Highball with the Devil';
+	Album8[4]  = 'Hendershot';
+	Album8[5]  = 'Calling Kyle';
+	Album8[6]  = 'Rancor';
+	Album8[7]  = 'Cohibas Esplenditos';
+	Album8[8]  = 'Delicate Tendrils';
+	Album8[9]  = 'The Awakening';
+	Album8[10] = 'Precipitation';
+	Album8[11] = 'George E. Porge';
+	Album8[12] = 'El Sobrante Fortnight';
+	Album8[13] = 'Granny\'s Little Yard Gnome';
+	Album8[14] = 'Me and Chuck';
+	Album8[15] = 'Carolina Rig';
+
+	Album9 = new Album('Brown Album', 15);
+	Album9[1]  = 'The Return of Sathington Willoughby';
+	Album9[2]  = 'Fisticuffs';
+	Album9[3]  = 'Golden Boy';
+	Album9[4]  = 'Over the Falls';
+	Album9[5]  = 'Shake Hands with Beef';
+	Album9[6]  = 'Camelback Cinema';
+	Album9[7]  = 'Hats Off';
+	Album9[8]  = 'Puddin\' Taine';
+	Album9[9]  = 'Bob\'s Party Time Lounge';
+	Album9[10] = 'Duchess and the Proverbial Mind Spread';
+	Album9[11] = 'Restin\' Bones';
+	Album9[12] = 'Coddingtown';
+	Album9[13] = 'Kalamazoo';
+	Album9[14] = 'The Chastizing of Renegade';
+	Album9[15] = 'Arnie';
+
+	Album10  = new Album('Other',4);
+	Album10[1] = 'Poetry and Prose';
+	Album10[2] = 'Bastardizing Jellikit';
+	Album10[3] = 'Hello Skinny';
+	Album10[4] = '"South Park" Theme';
+
+	var places = 10;    // Number of Songs user can Pick
+
+	theArtist = new Disco('Primus / Sausage / Les Claypool', places);  // Array of Albums
+
+	// End Data Declatation
+
+	// ---------------------------------------------------------------------------
+
+	// Begin Function Definitions
+
+	function Album(Title, Tracks) {
+	        this.tracks = Tracks;
+		this.title = Title;
+
+	        for (var i = 1; i <= Tracks; i++) 
+	                this[i] = '';
+		return this
+	}
+
+	function Disco(Artist, nAlbums) {
+		this.artist = Artist;
+	        this.number = nAlbums;
+
+		for (var i = 1; i <= nAlbums; i++) 
+			this[i] = eval("Album" + i);
+	        return this
+	}
+
+	function WriteForm() {
+		document.writeln("<INPUT TYPE=\"hidden\" NAME=\"places\" VALUE=\"" + places + "\">\n")
+		document.writeln("<TD VALIGN=TOP>\n<OL>");
+		for (var i = 1; i <= places; i++) { 	// Write Text Fields for Song Names
+			var sel = ( i == 1 ? "CHECKED " : "" );
+			document.write("<LI><INPUT TYPE=\"radio\" NAME=\"current\" VALUE=\"" + i + "\" " + sel + "onClick=\"SetCurr(this)\">");
+			document.write("<INPUT TYPE=\"hidden\" SIZE=5 NAME=\"" + i + "\" VALUE=\"\">");
+			document.write("<INPUT TYPE=\"text\" SIZE=20 NAME=\"" + (i+(2*places)) + "\" VALUE=\"\"></LI>\n");
+		}
+		document.writeln("</OL>\n</TD>\n\n");
+	}
+
+	function WriteChoices() {                // Write Select Fields
+	
+		document.writeln("<TD VALIGN=TOP>\n");
+		for (var i = 1; i <= theArtist.number; i++) {
+	
+			var currAlbum = theArtist[i];
+	
+			document.writeln("<SELECT NAME=\"" + (places+i) + "\" onChange=\"SetChoice(this)\">");
+			document.writeln("<OPTION SELECTED> " + currAlbum.title + ": ");
+			for (var song = 1; song <= currAlbum.tracks; song++)
+				document.writeln("\t<OPTION VALUE=\"" + song + "\"> " + currAlbum[song]);
+			document.writeln("</SELECT><BR>\n");
+		}
+		document.writeln("</TD>\n");	
+	}
+
+	// Global Variables; Don't Change
+
+	var currplace = 1;  // Used in keeping track of Place
+	var tempplace = 1;
+	var rubout = 0;
+
+	function SetChoice (album) {
+
+		var myindex = album.selectedIndex;
+
+		var AlbumCode = album.name - places;
+		var TrackCode = album.options[myindex].value;
+
+		var SongCode  = AlbumCode + "-" + TrackCode;
+		var theAlbum = theArtist[AlbumCode];
+
+		if (AlreadyPicked(SongCode)) 
+			alert("You Already Choose That Song!");
+		else { 			
+			document.voteform.elements[(3*currplace)-1].value = SongCode;      	// Song Code
+			document.voteform.elements[3*currplace].value = theAlbum[TrackCode];  	// Song Title
+			if (rubout) {			
+				rubout = 0;
+				currplace = tempplace;               // Recover place
+			} else {	
+				currplace++;					// Increment Place
+			}
+			if (currplace > places) 			// Restart Selection Loop
+				currplace = 1;
+			document.voteform.current[currplace-1].checked = true;	// Set Radio Button
+		}
+		album.selectedIndex = 0;					// Reset Selection
+	}	
+	
+	function AlreadyPicked(code) {
+
+	/*	for(var k = 1; k <= places; k++) {		// Traverse Input Fields
+			var theCode = document.voteform.elements[(3*k)-1].value;
+			if ((theCode) && (theCode == code))
+				return 1;
+		} */
+		return 0;
+	}			
+
+	function SetCurr(place) {
+			rubout = 1;
+			tempplace = currplace;			
+			currplace = place.value;
+			document.voteform.elements[(3*currplace)-1].value = "";	// Clear Code Field
+			document.voteform.elements[3*currplace].value = ""; 	// Clear Title Field		
+	}
+
+	document.writeln("<TABLE BORDER=0>\n");
+	WriteForm();
+	WriteChoices();
+	document.writeln("\n</TABLE>\n");
+
+// -->
+</SCRIPT>
+
+
+<P><INPUT TYPE="Submit" VALUE="Submit"> 
+<INPUT TYPE="Reset" VALUE="Reset"></P>
+</FORM>
+
+</HTML>

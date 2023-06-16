@@ -1,0 +1,226 @@
+<HTML><HEAD><TITLE>Los Bastardos: Links</TITLE></HEAD>
+	<META NAME="author" CONTENT="J Five Internet Solutions - http://www.jfive.com">
+	<META NAME="generator" CONTENT="UltraEdit 32 Text Editor">
+<BODY BACKGROUND="graphics/skeeter.jpg" BGCOLOR="000000" TEXT="FFFFFF" LINK="00CC33" VLINK="CC3333" ALINK="CC0033">
+
+<H1><A HREF="boat.htm#bastardos"><IMG SRC="graphics/skeeter.gif" BORDER=0 ALT="Los Bastardos"></A>
+<TT>Links</TT></H1>
+
+<P><FONT FACE="Arial, Helvetica" Size="-1"><A HREF="text.htm#bastardos">Text Only</A></FONT></P>
+
+<SCRIPT>
+<!-- hide this script from non-JavaScript browsers
+
+	// All code in this script is Copyright(C) 1996, Justin Boyan, jab+j@cs.cmu.edu
+	// For documentation and more info, see:  http://www.cs.cmu.edu/~jab/snark/
+	// This is SNARK Version 0.2, 26 Jan 1996
+	
+	var MAX_ENGINES = 30;
+	var SNARK_STRING = "hunting+the+snark";
+	
+	function MakeArray(n) {
+	   for (var i = 1; i <= n; i++) {
+	     this[i] = 0;
+	   }
+	   this.maxlen = n;
+	   this.len = 0;
+	   return this;
+	}
+	
+	var engs = MakeArray(MAX_ENGINES);
+	
+	function find_substring(needle, haystack) {
+	   var i, needlen = needle.length, haylen = haystack.length;
+	   for (i=0; i<=haylen-needlen; i++) {
+	      if (needle == haystack.substring(i,i+needlen))
+	        return i;
+	   }
+	   return false;
+	}
+	
+	function Engine(name, opts, home, search) {
+	  var snark = find_substring(SNARK_STRING, search);
+	  this.name = name;
+	  this.opts = opts;
+	  this.home = home;
+	  this.pre_snark = search.substring(0,snark);
+	  this.post_snark= search.substring(snark+SNARK_STRING.length, search.length);
+	}
+	
+	function Add(name, opts, home, search) {
+	  engs.len++;
+	  if (engs.len <= engs.maxlen) {
+	    engs[engs.len] = new Engine(name, opts, home, search)
+	  }
+	  else {
+	    alert("Better increase MAX_ENGINES: " + engs.len + ">" + engs.maxlen)
+	  }
+	}
+	
+	// ADD YOUR OWN SEARCH ENGINES BELOW.  (See http://www.cs.cmu.edu/~jab/snark/ )
+	
+	Add("Yahoo!", "SELECTED",
+	   "http://www.yahoo.com/",
+	   "http://search.yahoo.com/bin/search?p=hunting+the+snark" );		
+
+	Add("Google", "",
+	   "http://www.google.com/",
+	   "http://www.google.com/search?q=hunting+the+snark" );		
+
+	Add("AltaVista", "",
+	   "http://www.altavista.com/",
+	   "http://www.altavista.com/cgi-bin/query?pg=q&what=web&fmt=d&q=hunting+the+snark" );
+	
+	Add("Lycos", "",
+	   "http://www.lycos.com/",
+	   "http://www.lycos.com/cgi-bin/pursuit?query=hunting+the+snark&matchmode=and&cat=lycos" );
+	
+	// ADD YOUR OWN SEARCH ENGINES ABOVE.  (See http://www.cs.cmu.edu/~jab/snark/ )
+	
+	function HandleForm(form) {
+	  form.submit();  // This fixes a Netscape 2.0b6a bug. How, I don't understand.
+	
+	  var i, oldq=form.query.value, newq="";
+	  for (i=0; i<oldq.length; i++) {  // compress [ ]+ into \+
+	    var thischar = oldq.charAt(i);
+	    if (thischar != ' ')
+	      newq += thischar;
+	    else if (lastchar != ' ')
+	      newq += '+';
+	    lastchar = thischar;
+	  }
+	  var eng = engs[1+form.service.selectedIndex];
+	  location.href = newq ? eng.pre_snark + newq + eng.post_snark : eng.home;
+	}
+	
+	function DisplayForm() {
+	  document.writeln('<FORM OnSubmit="HandleForm(this); return false">');
+	  document.writeln('Search <SELECT name="service">');
+	  for (i=1; i <= engs.len; i++) {
+	    document.writeln("<OPTION " + engs[i].opts + "> " + engs[i].name);
+	  }
+	  document.writeln('</SELECT> for <INPUT size=26 name="query" value="Primus">');
+	  document.writeln('<input type=submit value=" GO!">');
+	  document.writeln('</FORM>');
+	}
+
+	if (3 <= parseInt(navigator.appVersion))   
+		DisplayForm();
+	
+	// done hiding from old browsers -->
+
+</SCRIPT>
+
+
+	<P><FONT FACE="Arial, Helvetica">These <B>Major Sites</B> have at least one special feature you 
+	just can't find anywhere else.</FONT></P>
+	<DL>
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.ram.org/music/primus/primus.html">The Cheesy Primus Page</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">The <EM>original</EM> Primus Page!</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.primussucks.com">PRIMUS SUCKS.COM</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">The Official Primus page by that guy they call Bob Cock.</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www4.ncsu.edu/eos/users/a/aklikins/pub/primus.html">Primus FAQ</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">Everything you ever wanted to know about Primus, etc.</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.lesclaypool.com">Les Claypool.com</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">Dedicated solely to the Bastard himself.</FONT></DD>
+		
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.angelfire.com/ok/oreojuedberry/primus.html">Miss Nuttbutter's</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">The first and only page made by one of the elusive "Primus Chicks"</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.ultimateprimus.com">The Ultimate Primus Page</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">I think the title pretty much says it!</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial,Helvetica"><A HREF="http://mama.indstate.edu/users/primus/">Jim Wade's Sucky Page</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">Funny page with a description of Bob Cock himself.</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://members.tripod.com/~borateen/index.html">The Cheese Boat</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">If you can wait 2 hours for this page to load, it's worth it.</FONT></DD>
+		
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/alley/5737/">Frizzle Fry's Page</A></FONT>
+		<DD><FONT FACE="Arial, Helvetica">Cool Art and other Proziac things</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/WestHollywood/Village/6356">Spankin' Rankin's Preternatural Post of Pointless Primus Passions</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">A 100% self-indulgent site.</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://perso.wanadoo.fr/primus/Primus.htm">Tales From the FrenchBowl</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">This French site is also available <A HREF="http://www.mygale.org/05/mattemir/Primus.htm">English</A> in too!</FONT></DD>
+				
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/7207">Diamond D's Primus Homepage</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">You can trade Bootlegs here!</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://members.tripod.com/~toaster1000">Toaster's Concert Photo Archive</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">Like it says, lots of concert photos.</FONT></DD>
+
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://weber.u.washington.edu/~gozar/primus.html">The BPA </A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">Visit the Bloody Pub Alliance and steal their wallpaper like I did!</FONT></DD>
+	
+		<DT><LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Underground/4784/primus.html">Land of the Pachyderm</A></FONT></DT>
+		<DD><FONT FACE="Arial, Helvetica">Take the Mr. Knowitall Test...</FONT></DD>	
+
+	</DL>
+	<P><FONT FACE="Arial, Helvetica">These site still <B>Suck</B>, but don't have anything especially unique about them.
+	This is due to the fact that their authors aren't unemployed losers with nothing better to do than create Primus pages.</FONT></P>
+	<UL>	
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Alley/4780/">Capn Shiner's Primus Punchbowl</A></FONT>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://dommer.cjb.net">Dom Cal's Primus Page</A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://muddie.home.ml.org">The Muddie Primus Page</A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.spectranet.ca/~andrade/">The UnOfficial Les Claypool Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.angelfire.com/oh/ralphie/primus.html">Shake Hands with Primus</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Studio/1701">Bob's Party Time Lounge</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.kpbsd.k12.ak.us/programs/quest/MultiMedia/Jesseg/multimedia_Primus%20Folder/Primus.html">Primus...What Else Needs to Be Said?</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://members.tripod.com/~Mickey6/bastards.htm">Them Crazy Bastards</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.umd.umich.edu/~cblanton/primus.html">What A Bunch of Bastards!</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Studio/1701/">Bob's Party Time Lounge</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.angelfire.com/ny/primusrulz/">Pork Soda</A></FONT>
+
+		<P></P>
+
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://member.aol.com/clubsmash/primus.htm">Caleb's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/HotSprings/2378">Claypool's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Studio/8408/primus.html">Eric's Lame Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.mds.mdh.se/~ent94hlm/musik/primus.htm">H&#229;kans PrimusPage</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/CollegePark/4061/">Tony's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.angelfire.com/fl/mexre/">Mexre's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Alley/7261/index.html">Sanch's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Palladium/8766/">Rob's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Alley/6300/">Primus Sucks!</FONT></A>	
+	</UL>
+	<FONT FACE="Arial, Helvetica">These sites are <B>Extinct</B> as far as I know.</FONT></P>	
+	<UL>	
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.wserv.com/~brack/primus.html">Primus Links</A></FONT>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://fortunecity.com/tinpan/baccarach/332">Tippi Toes</A></FONT>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.netaxs.com/people/am004d/primus.html">The Primus Page (Tabs)</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Palms/5256/">Primus and Herb Stuff</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.wolsi.com/~les/primus.htm">Andy's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.toptown.com/hp/steeef/">Steeef's Primus Page</A></FONT>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.webabyss.com/primus">The Hamburger Train</A></FONT>		
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://members.tripod.com/~bobcock/index-9.html">Can You Say PRIMUS?</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.serve.com/Philm/suck.html">Phil Maher Likes Primus</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/BourbonStreet/8989/index.html">El Sobrante Hideout</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.ns.net/~evilcat/">Tommy the Cat's Litterbox</A></FONT>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://198.202.151.191/~willy/primus/">The Bastard Page</A></FONT>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SoHo/Lofts/4096/primus.html">A Little Bit of Primus</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://members.aol.com/trentr189/primus.html">PRIMUS Sucks</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.angelfire.com/oh/mrkrinkle/primus.html">Mr. Krinkle's Primus Lounge</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Alley/9122/Primus.html">Nick's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.windsor.igs.net/~keffer/Primus.html">The UnOfficial Primus Page</A></FONT>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.geocities.com/SunsetStrip/Alley/7481/primus.html">King Nato's Primus Page</FONT></A>
+		<LI><FONT FACE="Arial, Helvetica"><A HREF="http://www.angelfire.com/pages0/primus/index.html">Primus: The Band With the Big Brown Beaver</FONT></A>
+	</UL>
+
+<P><FONT FACE="Arial, Helvetica">Use this <B>Form</B> if you have a site that isn't on this list.</FONT></P>
+<FORM METHOD="POST" ENCTYPE="text/plain" ACTION="mailto:primus@bastard-boat.ml.org?subject=Primus Links">
+<PRE>
+
+URL:    <INPUT TYPE="text" NAME="url" SIZE="30" MAXLENGTH="50" VALUE="http://">
+Title:  <INPUT TYPE="text" NAME="title" SIZE="30" MAXLENGTH="30">
+
+<INPUT TYPE="submit" VALUE="Submit">
+</PRE>
+</FORM>
+
+</BODY>
+</HTML>

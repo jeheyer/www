@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>The Bastard Boat</title>
+<meta charset="utf-8" />
+<meta name="description" content="The Bastard Boat, Primus, Sausage, Les Claypool, Larry LaLonde, Brain, Tim Alexander, Jay Lane" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow, archive, imageindex">
+<link rel="stylesheet" href="css/bb.css">
+</head>
+<body>
+<script src="js/jquery.min.js"></script>
+<table>
+<tr>
+<td>
+<img src="images/bastards.jpg" USEMAP="#thebastards" ALT="Pick A Name, Pick a Place">
+<map name="thebastards">
+<area shape=CIRCLE COORDS="46,57,22" HREF="lalonde.htm" target="bottom_iframe" ALT="Larry LaLonde">
+<area shape=CIRCLE COORDS="115,31,25" HREF="claypool.htm" target="bottom_iframe" ALT="Les Claypool">
+<area shape=CIRCLE COORDS="182,61,18" HREF="brain.htm" target="bottom_iframe" ALT="Brain">
+</map>
+<h1><a class="title" href="boat.html">The Bastard Boat</a></h1>
+<img src="images/callit.gif" alt="Call it Pointless animated GIF"><br>
+</td>
+<td>
+<table>  	
+<thead>
+<tr>
+<th colspan=4>-- The Pointless Page --</th>
+</tr>
+</thead>
+<tbody>	
+<tr>
+<td><a href="audio.html" target="bottom_iframe"><img class="pp_on" src="images/robot-off.gif" alt="Audio" /></a><br>Audio</td>
+<td><a href="lyrics.html" target="bottom_iframe"><img class="pp_on" src="images/robot-off.gif" alt="Lyrics"></a><br>Lyrics</td>
+<td><a href="midis.html" target="bottom_iframe"><img class="pp_on" src="images/robot-off.gif" alt="MIDIS"></a><br>MIDIS</td>
+<td><a href="videos.html" target="bottom_iframe"><img class="pp_on" src="images/robot-off.gif" alt="Videos"></a><br>Videos</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th colspan=4>-- Los Bastardos --</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="disco.html" target="bottom_iframe"><img class="lb_on" src="images/skeet-off.gif" alt="Discography"></a>Discography</td>
+<td><a href="images.html" target="bottom_iframe"><img class="lb_on" src="images/skeet-off.gif" alt="Image"></a>Images</td>
+<td><a href="links.html" target="bottom_iframe"><img class="lb_on" src="images/skeet-off.gif" alt="Links"></a>Links</td>
+<td><a href="tour.html" target="bottom_iframe"><img class="lb_on" src="images/skeet-off.gif" alt="Tour"></a>Tour</td>
+</tr>		
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+<iframe src="links.html" name="bottom_iframe" width=640 height=480 allowfullscreen style="width:100%; height:100%;"></iframe>
+<script>
+    $(document).ready(function(){
+        $(".pp_on").hover(
+            function() {
+                $(this).attr("src","images/robot-on.gif");
+            },
+            function() {
+                $(this).attr("src","images/robot-off.gif");
+            }
+        );
+        $(".lb_on").hover(
+            function() {
+                $(this).attr("src","images/skeet-on.gif");
+            },
+            function() {
+                $(this).attr("src","images/skeet-off.gif");
+            }
+        );
+    });
+</script>
+</body>
+</html>

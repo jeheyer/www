@@ -1,0 +1,25 @@
+html,body	{ height: 100%; background-color: black; color: white; }
+p		{ color: white; font-family: Arial; text-align: left; }
+a:link		{ color: #CC6600; }
+a:visited	{ color: #996600; }
+a:active	{ color: #CC0033; }
+b	{ font-family: Arial; }
+table	{ width: 100%; border-spacing: 2px; border-collapse: collapse; }
+th	{ font-family: Courier; text-align: center; font-size: 100%; }
+td	{ font-family: Arial; text-align: center; padding: 10px; }
+dt	{ font-family: Arial; text-align: left; padding: 10px; font-size: 100%; }
+dd	{ font-family: Arial; text-align: left; padding: 10px; }
+h1	{ color: #FFCC99; font-family: Courier; font-size: 150%;}
+h2	{ color: white; font-family: Courier; text-align: left; }
+h3	{ color: white; font-family: Courier; text-align: left; }
+h4	{ color: white; font-family: Courier; text-align: center; }
+ul,ol	{ list-style-type:none; font-family: Arial; }
+tt	{ font-family: "Lucida Console", "Courier", monospace; }
+img.map, map area { outline: none; }
+a.title { text-decoration-line:none; }
+
+.poll td { font-family: Arial; text-align: left; padding: 4px; }
+
+iframe {
+    overflow: hidden;
+}

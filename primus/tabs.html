@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head><title>Los Bastardos: Tabs</title>
+<meta charset="utf-8" />
+<meta name="description" content="Primus, Les Claypool, Sausage, Guitar and Bass Dates" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow, archive, imageindex">
+<link rel="stylesheet" type="text/css" href="css/lb.css">
+<style>
+fieldset {
+    float: left;
+    width: 20%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+fieldset input {
+    width: 100%;
+}
+</style>
+</head>
+<body>
+
+<header>
+
+<A HREF="main.html" target="_parent"><IMG SRC="images/skeeter.gif" ALT="Los Bastardos"></a>
+
+<h1>Tabs</h1>
+
+</header>
+
+<form method=GET id="albumtabselector" action="get_tabs.cgi">
+<fieldset>
+  <legend>Instrument Type: </legend>
+  <input type="checkbox" name="instrument" id="guitar" value="guitar" checked>Guitar<br>
+  <input type="checkbox" name="instrument" id="bass" value="bass" checked>Bass Guitar<br>
+</fieldset>
+<fieldset>
+  <legend>Album:</legend>
+  <select name="album_id" id="album_selector">
+  <option value="0">&nbsp;</option>
+  </select>
+</fieldset>
+<fieldset>
+  <legend>Song:</legend>
+  <select name="song" id="song">
+  </select>
+</fieldset>
+</form>
+
+<script src="js/ajax-functions.js"></script>
+<script>
+
+(async() => {
+
+  const ajax_url = "/python/get_table/primus/albums";
+
+  MakeAjaxCall(ajax_url).then(data => {
+
+    const selector = document.getElementById('album_selector');
+
+    for (const obj of data) {
+
+      let option = document.createElement("option");
+      option.value = obj.id;
+      option.text = obj.full_name;
+      selector.add(option);
+    }
+  }).catch(console.log);
+
+})()
+
+</script>
+
+</body>
+</html>

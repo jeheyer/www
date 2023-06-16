@@ -1,0 +1,178 @@
+<HTML LANG="en">
+	<HEAD><TITLE>The Bastard Boat</TITLE>
+	<META NAME="author" CONTENT="J Five Internet Solutions - http://www.jfive.com">
+	<META NAME="generator" CONTENT="UltraEdit 32 Text Editor">
+
+<BODY BGCOLOR="000000" TEXT="FFFFFF" LINK="CC6600" VLINK="996600" ALINK="CC0033">
+
+<TABLE BORDER=0 CELLSPACING=2 CELLPADDING=10>
+<TR>
+<TD WIDTH=50% ALIGN=CENTER>
+<IMG SRC="pictures/bastards.jpg" BORDER=0 USEMAP="#bastardboat" ALT="Pick A Name, Pick a Place">
+<MAP NAME="bastardboat">
+<AREA SHAPE=CIRCLE COORDS="46,57,22" HREF="lalonde.htm" ALT="Larry LaLonde" onMouseOver="window.status='Larry LaLonde'; return true">
+<AREA SHAPE=CIRCLE COORDS="115,31,25" HREF="claypool.htm" ALT="Les Claypool" onMouseOver="window.status='Les Claypool'; return true">
+<AREA SHAPE=CIRCLE COORDS="182,61,18" HREF="brain.htm" ALT="Brain" onMouseOver="window.status='Brain'; return true">
+<AREA SHAPE=DEFAULT ALT="Pick a Name, Pick a Place" onMouseOver="window.status='Pick a Name, Pick a Place'; return true">
+</MAP>
+<H1 ALIGN=CENTER><FONT COLOR="FFCC99"><TT>The Bastard Boat</TT></FONT></H1>
+<P ALIGN=CENTER><TT><A HREF="http://www.bastardboat.com/">http://www.bastardboat.com</A></TT></P>
+</TD>
+
+<TD WIDTH=50%>
+<CENTER><IMG SRC="graphics/callit.gif"></CENTER>
+
+<P><FONT FACE="Arial, Helvetica"><B>What's your favorite song on the new album?</B>
+
+<FORM ACTION="poll.php" METHOD="POST">
+<INPUT TYPE=HIDDEN NAME="pollname" VALUE="newalbum">
+<INPUT TYPE=HIDDEN NAME="background" VALUE="graphics/toilet.jpg">
+<INPUT TYPE=HIDDEN NAME="bgcolor" VALUE="black">
+<INPUT TYPE=HIDDEN NAME="text" VALUE="white">
+<INPUT TYPE=HIDDEN NAME="font" VALUE="Arial, Helvetica">
+<SELECT NAME="choice">
+<OPTION VALUE="The Carpenter and the Dainty Wife">The Carpenter and the Dainty Wife
+<OPTION VALUE="Pilcher's Squad">Pilcher's Squad
+<OPTION VALUE="Mary the Ice Cube">Mary the Ice Cube
+<OPTION VALUE="The Last Superpower aka Rapscallion">The Last Superpower aka Rapscallion
+<OPTION VALUE="My Friend Fats">My Friend Fats
+</SELECT>
+<INPUT TYPE=SUBMIT NAME="action" VALUE="Vote">
+</FORM>
+
+</FONT></P>
+
+</TD>
+</TR>
+</TABLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+<!-- Hide from older Browsers
+
+function MakeTable(Name, Desc) {
+	document.write('<A NAME=\"'+Name+'\"><H2 ALIGN=CENTER><TT>-- '+Desc+' --</TT></H2></A>');
+	document.write('<TABLE BORDER=0 CELLSPACING=2 CELLPADDING=10 ALIGN=CENTER>\n');
+	document.write('<TR ALIGN=CENTER>\n');
+}
+
+function MakeButton(Name, Type, Desc) {
+
+	var BrowserVer = parseInt(navigator.appVersion)
+	 
+	document.write('\n<TD ALIGN=CENTER>\n');
+	document.write('<A HREF=\"'+Name+'.htm\"');
+	if (BrowserVer >= 3) {
+
+		var onImage = new Image();
+		onImage.src = "graphics/"+Type+"-on.gif";
+		var offImage = new Image();	
+		offImage.src = "graphics/"+Type+"off.gif";
+
+	        var onName = onImage.src;
+		var offName = offImage.src;
+		
+		document.write(' onMouseOver=\"document.'+Name+'.src=\''+onName+'\'\"');
+		document.write(' onMouseOut=\"document.'+Name+'.src=\''+offName+'\'\">');
+		var theImage = offName;
+	} else {
+		document.write('>');
+		var theImage = "graphics/"+Type+"-on.gif";
+	}
+	document.write('<IMG NAME=\"'+Name+'\" SRC=\"'+theImage+'\" HSPACE=20 VSPACE=5 BORDER=0 ALT=\"'+Desc+'\"></A><BR>\n');
+	document.write('<FONT SIZE=\"\+1\"><TT>'+Desc+'</TT></FONT>\n');
+	document.write('</TD>\n');
+}
+
+//-->
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+        MakeTable("bastards","The Bastards");
+        MakeButton("lalonde","p","Larry LaLonde");
+        MakeButton("claypool","p","Les Claypool");
+        MakeButton("brain","p","Brain");
+	document.write('</TR>\n</TABLE>\n');
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+        MakeTable("pointless","The Pointless Page");
+        MakeButton("audio","robot","Audio");
+        MakeButton("lyrics","robot","Lyrics");
+        MakeButton("midis","robot","MIDIs");
+        MakeButton("videos","robot","Videos");
+	document.write('</TR>\n</TABLE>\n');
+</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+        MakeTable("bastards","Los Bastardos");
+        MakeButton("disco","skeet","Discography");
+        MakeButton("images","skeet","Images");
+        MakeButton("links","skeet","Links");
+        MakeButton("tour","skeet","Tour");
+	document.write('</TR>\n</TABLE>\n');
+</SCRIPT>
+
+<!-- Plain HTML -->
+<TABLE WIDTH=100% ALIGN=CENTER BORDER=0 CELLSPACING=2 CELLPADDING=10>
+<TR>
+	<TD>
+		<P ALIGN=CENTER>
+		<B><FONT FACE="Courier">-- Mind Spreads --</FONT></B><BR><BR>
+
+		<FONT FACE="Arial, Helvetica"><A HREF="cheesvid.htm">The Cheesy Home Video</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="ring.htm">The Cheesy Primus Ring</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="vrml/shiner4.wrl">Captain Shiner VRML</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="other.htm">Other Mindless Crap</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="trivia.php">John's Trivia Game</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="tabs.htm">Tablature</A></FONT><BR>
+		</P>
+	</TD>
+	<TD>
+		<P ALIGN=CENTER>		
+		<B><FONT FACE="Courier">-- Party Time Lounges --</FONT></B><BR><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="http://www.ram.org/music/primus/wwwboard/wwwboard.html">The Cheesy Primus WWW Board</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="irc.htm">#primussucks on EFNet (IRC)</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="http://www.ram.org/misc/mailinglist.html">The Primus Mailing List</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="news:alt.music.primus">The Primus Newsgroup</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="http://www.primussucks.com/cgi-bin/nph-bbs.pl">The Primus Bull Board</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="chat.htm">Cheesy Chat</A></FONT><BR>
+		</P>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<P ALIGN=CENTER>
+		<B><FONT FACE="Courier">-- The Pressman --</FONT></B><BR><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="articles.htm">Articles</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="news.htm">News</A></FONT><BR>
+		</P>
+	</TD>
+	<TD>
+		<P ALIGN=CENTER>
+		<B><FONT FACE="Courier">-- Welcome to This World --</FONT></B><BR><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="history.htm">Personal History</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="fasq.htm">FASQ</A></FONT><BR>
+		</P>
+	</TD>
+</TR>
+<TR>
+	<TD>
+		<P ALIGN=CENTER>
+		<B><FONT FACE="Courier">-- Chastizings --</FONT></B><BR><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="book.htm">The Bastard Book</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="mailto:john@bastard-boat.com?subject=The Bastard Boat">B-Mail</A></FONT><BR>
+		</P>
+	</TD>
+	<TD>
+		<P ALIGN=CENTER>
+		<B><FONT FACE="Courier">-- Hats Off --</FONT></B><BR><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="people.htm">People Credits</A></FONT><BR>
+		<FONT FACE="Arial, Helvetica"><A HREF="tech.htm">Tech Credits</A></FONT><BR>
+		</P>
+	</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>
