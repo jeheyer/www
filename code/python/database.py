@@ -69,15 +69,9 @@ async def db_update(engine, table_name, column_name, value, values={}):
             val = upd.values(values)
             cond = val.where(table.c.column_name == value)
 
-            u = update(BOOKS)
-            u = u.values({"book_name": "2022 future ahead"})
-            u = u.where(BOOKS.c.book_id == 3)
-            engine.execute(u)
-
             #statement = table.insert().values(values)
-            statement = table.
-            result = await conn.execute(statement)
-            return result
+            #result = await conn.execute(statement)
+            #return result
 
     except Exception as e:
         raise e
