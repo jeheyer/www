@@ -14,7 +14,7 @@
 <p>Click an album cover to see a larger version!</p>
 <ol id="album_list">
 </ol>
-<form method=post id="poll" action="/python/poll_vote">
+<form method=post id="poll" action="/poll_vote">
 <input type=hidden name="db_name" value="primus">
 <input type=hidden name="poll_name" value="albums">
 <input type=hidden name="poll_desc" value="What is Your Favorite Album?">
@@ -41,7 +41,7 @@
 
 (async() => {
 
-  const ajax_url = "/python/get_table/primus/albums";
+  const ajax_url = "/get_table/primus/albums";
 
   MakeAjaxCall(ajax_url).then(data => {
 

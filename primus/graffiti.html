@@ -30,7 +30,7 @@ if (get_params["wall"])
 
 (async() => {
 
-  const ajax_url = `/python/graffiti/primus/${wall}`;
+  const ajax_url = `/graffiti/primus/${wall}`;
 
   MakeAjaxCall(ajax_url).then(data => {
     let html = "";

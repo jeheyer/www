@@ -63,7 +63,7 @@ if (get_params["poll_desc"])
   let cell = row.insertCell(0);
   cell.innerHTML = `<b>${poll_desc}</b>`;
 
-  const ajax_url = "/python/polls/primus/" + poll_name;
+  const ajax_url = "/polls/primus/" + poll_name;
 
   MakeAjaxCall(ajax_url).then(poll_results => {
 

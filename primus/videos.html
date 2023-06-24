@@ -13,7 +13,7 @@
 <h1>Videos</h1>
 <ol id="video_list">
 </ol>
-<form method=post id="poll" action="/python/poll_vote">
+<form method=post id="poll" action="/poll_vote">
 <input type=hidden name="db_name" value="primus">
 <input type=hidden name="poll_name" value="videos">
 <input type=hidden name="poll_desc" value="What is Your Favorite Video?">
@@ -40,7 +40,7 @@
 
 (async() => {
 
-  const ajax_url = "/python/get_table/primus/videos";
+  const ajax_url = "/get_table/primus/videos";
 
   MakeAjaxCall(ajax_url).then(data => {
 
