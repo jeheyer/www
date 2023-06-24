@@ -79,7 +79,7 @@ def _poll_vote():
         poll_name = request.form.get('poll_name')
         poll_url = request.form.get('poll_url')
         poll_desc = request.form.get('poll_desc', "")
-        choice_id = request.form.get('choice_id')
+        choice_id = request.form.get('choice_id', 0)
         redirect_url = run(poll_vote(db_name, poll_name, poll_url, poll_desc, choice_id))
         return redirect(redirect_url, code=302)
     except Exception as e:

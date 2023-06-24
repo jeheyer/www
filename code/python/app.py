@@ -124,8 +124,8 @@ async def _poll_vote(req: Request):
 
     try:
         inputs = await req.form()
-        db_name = inputs['db_name']
-        poll_name = inputs['poll_name']
+        db_name = inputs.get('db_name')
+        poll_name = inputs.get('poll_name')
         poll_url = inputs.get('poll_url')
         poll_desc = inputs.get('poll_desc', "")
         choice_id = inputs.get('choice_id', 0)

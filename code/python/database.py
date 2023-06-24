@@ -58,16 +58,26 @@ async def db_insert(engine, table_name, values={}):
         raise e
 
 
-async def db_update(engine, table_name, values={}):
+async def db_update(engine, table_name, column_name, value, values={}):
 
-    from sqlalchemy import Table, MetaData
+    from sqlalchemy import Table, MetaData, update
 
     try:
         async with engine.begin() as conn:
             table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
+            upd = update(table)
+            val = upd.values(values)
+            cond = val.where(table.c.column_name == value)
+
+            u = update(BOOKS)
+            u = u.values({"book_name": "2022 future ahead"})
+            u = u.where(BOOKS.c.book_id == 3)
+            engine.execute(u)
+
             #statement = table.insert().values(values)
-            #result = await conn.execute(statement)
-            #return result
+            statement = table.
+            result = await conn.execute(statement)
+            return result
 
     except Exception as e:
         raise e

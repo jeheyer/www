@@ -241,8 +241,10 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
     db_row = {'poll_name': poll_name, 'choice_id': choice_id, 'num_votes': 0}
     try:
 
+        # Connect to database
         engine = await db_engine(db_name)
 
+        # Check if there's existing votes for this choice
         num_votes = 0
         results = await db_get_table(engine, "polls", join_table_name=poll_name)
         for _ in results:
@@ -250,9 +252,10 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
                 num_votes = _.get('num_votes', 0)
                 break
 
+        # Update the database
         db_row['num_votes'] = num_votes + 1
         if num_votes > 0:
-            result = await db_update(engine, "polls", db_row)
+            result = await db_update(engine, "polls", "choice_id", choice_id, db_row)
         else:
             result = await db_insert(engine, "polls", db_row)
         """
