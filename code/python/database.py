@@ -1,12 +1,9 @@
-from sqlalchemy import Table, MetaData, select
-from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy.ext.asyncio import AsyncSession
-
 
 async def db_engine(db_name):
 
     from os import path
     from tomli import load
+    from sqlalchemy.ext.asyncio import create_async_engine
 
     try:
         # Get Database connection info
@@ -48,12 +45,29 @@ async def db_engine_dispose(engine=None, session=None):
 
 async def db_insert(engine, table_name, values={}):
 
+    from sqlalchemy import Table, MetaData
+
     try:
         async with engine.begin() as conn:
             table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
             statement = table.insert().values(values)
             result = await conn.execute(statement)
             return result
+
+    except Exception as e:
+        raise e
+
+
+async def db_update(engine, table_name, values={}):
+
+    from sqlalchemy import Table, MetaData
+
+    try:
+        async with engine.begin() as conn:
+            table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
+            #statement = table.insert().values(values)
+            #result = await conn.execute(statement)
+            #return result
 
     except Exception as e:
         raise e
