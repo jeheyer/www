@@ -65,13 +65,12 @@ async def db_update(engine, table_name, column_name, value, values={}):
     try:
         async with engine.begin() as conn:
             table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
-            upd = update(table)
-            val = upd.values(values)
-            cond = val.where(table.c.column_name == value)
+            #column_names = [c.name for c in table.columns]
+            #val = update(table).values(values).where(table.c.column_name == value)
 
-            #statement = table.insert().values(values)
-            #result = await conn.execute(statement)
-            #return result
+            statement = update(table).values(values).where(table.c.choice_id == value)
+            result = await conn.execute(statement)
+            return result
 
     except Exception as e:
         raise e
