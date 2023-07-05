@@ -68,9 +68,9 @@ async def db_update(engine, table_name, column_name, value, values={}):
             #column_names = [c.name for c in table.columns]
             #val = update(table).values(values).where(table.c.column_name == value)
 
-            statement = update(table).values(values).where(table.c.choice_id == value)
-            result = await conn.execute(statement)
-            return result
+            statement = update(table).where(table.id.in_(values(values).where(table.c.choice_id == value)
+            #result = await conn.execute(statement)
+            #return result
 
     except Exception as e:
         raise e
@@ -100,7 +100,8 @@ async def db_get_table(engine, table_name, join_table_name=None, where={}, order
         else:
             async with engine.connect() as conn:
                 if where:
-                    statement = table.select().where(table.columns.wall == where['wall']).order_by(table.columns.timestamp.desc())
+                    statement = table.select().where(table.columns.wall == where['wall'])\
+                        .order_by(table.columns.timestamp.desc())
                     result = await conn.execute(statement)
                 else:
                     result = await conn.execute(select(table))
