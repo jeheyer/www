@@ -16,7 +16,7 @@ function FindProxyForURL(url, host)
     // OpenText Stuff requiring proxy
     if (dnsDomainIs(host, ".gxsonline.net") || dnsDomainIs(host, ".idldap.net") || dnsDomainIs(host, ".resldap.net"))
         return "PROXY " + Proxy + ";";
-    if (dnsDomainIs(host, "jira.opentext.com") || dnsDomainIs(host, "confluence.opentext.com") || dnsDomainIs(host, ".otxlab.net"))
+    if (dnsDomainIs(host, "jira.opentext.com") || dnsDomainIs(host, "confluence.opentext.com") || dnsDomainIs(host, "sm.opentext.com"))
         return "PROXY " + Proxy + ";";
 
     // Hightail Stuff
