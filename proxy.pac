@@ -1,7 +1,7 @@
 function FindProxyForURL(url, host)
 {
 
-    Proxy = "100.77.77.77:3128";
+    Proxy = "100.77.77.101:3128";
 
     // Localhost
     if (isPlainHostName(host) || localHostOrDomainIs(host, "localhost") || shExpMatch(host, "127.*.*.*"))
