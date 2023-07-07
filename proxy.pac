@@ -1,10 +1,7 @@
 function FindProxyForURL(url, host)
 {
 
-    //Proxy_Host = "150.105.212.41";
-    Proxy_Host = "10.135.102.150";
-    Proxy_Port = "3128";
-    Proxy = Proxy_Host + ":" + Proxy_Port;
+    Proxy = "100.77.77.77:3128";
 
     // Localhost
     if (isPlainHostName(host) || localHostOrDomainIs(host, "localhost") || shExpMatch(host, "127.*.*.*"))
@@ -22,12 +19,11 @@ function FindProxyForURL(url, host)
     if (dnsDomainIs(host, "jira.opentext.com") || dnsDomainIs(host, "confluence.opentext.com") || dnsDomainIs(host, ".otxlab.net"))
         return "PROXY " + Proxy + ";";
 
-    /* Hightail Stuff
+    // Hightail Stuff
     if (dnsDomainIs(host, ".ops.hightail.com") || dnsDomainIs(host, ".ops-nonprod.hightail.com"))
         return "PROXY " + Proxy + ";"; 
     if (shExpMatch(host, "10.135.*") || shExpMatch(host, "10.41.*.*")) 
         return "PROXY " + Proxy + ";"; 
-    */
 
     return "DIRECT";
 }
