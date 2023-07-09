@@ -68,7 +68,7 @@ async def db_update(engine, table_name, column_name, value, values={}):
             #column_names = [c.name for c in table.columns]
             #val = update(table).values(values).where(table.c.column_name == value)
 
-            statement = update(table).where(table.id.in_(values(values).where(table.c.choice_id == value)
+            #statement = update(table).where(table.id.in_(values(values).where(table.c.choice_id == value))
             #result = await conn.execute(statement)
             #return result
 

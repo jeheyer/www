@@ -2,6 +2,7 @@ from flask import Flask, request, render_template, Response
 from requests import Session
 from xmltodict import parse
 from json import dumps, loads
+from platform import system
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -39,11 +40,12 @@ def root(path=None):
                     else:
                         size = round(size / 1000, 3)
                         continue
+            last_modified = obj.get('LastModified')
             _ = {
                 'key': f"{Url}{key}" if size else key,
                 'name': name,
                 'size': size,
-                'last_modified': obj.get('LastModified'),
+                'last_modified': f"{last_modified[0:10]} {last_modified[12:16]}",
             }
             if path:
                 if path in key:
@@ -54,7 +56,13 @@ def root(path=None):
                         files.append(_)
                 else:
                     files.append(_)
-        return render_template('bucket_browser.html', files=files)
+        web_server = {
+            'software': request.headers.get('server_software', 'Apache'),
+            'os': system(),
+            'host': request.host.split(':')[0],
+            'port': request.host.split(':')[1],
+        }
+        return render_template('bucket_browser.html', files=files, path=path, web_server=web_server)
     except Exception as e:
         return Response(e, 500, content_type="text/plain")
 

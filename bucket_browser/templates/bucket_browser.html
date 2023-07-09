@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Bucket Browser</title>
+<title>Index of {{path}}</title>
 <meta charset="utf-8" />
 <meta name="description" content="A" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,10 +13,14 @@
 </style>
 </head>
 <body>
+<h1>Index of {{path}}</h1>
+<tr><th colspan="5"><hr></th></tr>
 <ul>
 {% for file in files %}
-  <li><a href='{{file.key}}'>{{file.name}} {{file.size}} {{file.last_modified}}</li>
+  <li><a href='{{file.key}}'>{{file.name}} {{file.size}} {{file.last_modified}}</a></li>
 {% endfor %}
 </ul>
+<tr><th colspan="5"><hr></th></tr>
+<address>{{web_server['software']}} ({{web_server['os']}}) Server at {{web_server['host']}} Port {{web_server['port']}}</address>
 </body>
 </html>
