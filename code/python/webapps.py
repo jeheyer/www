@@ -108,7 +108,7 @@ def ping(headers={}, request=None) -> dict:
         info['client_ip'] = get_client_ip(info)
         info['platform_node'] = node()
         info['platform_os'] = "{} {}".format(system(), release())
-        info['platform_cpu'] = "{}/{}".format(machine(), processor())
+        info['platform_cpu'] = str(machine())
         info['python_info'] = str(version).split()[0]
         #info['environ'] = str(environ)
 
