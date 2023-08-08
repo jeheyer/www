@@ -99,8 +99,8 @@ def ping(headers={}, request=None) -> dict:
                 info['http_x_real_ip'] = request.headers.get('x-real-ip')
                 info['http_x_forwarded_for'] = request.headers.get('x-forwarded-for')
                 info['http_x_forwarded_proto'] = request.headers.get('x-forwarded-proto')
-                info['http_x_forwarded_host'] = request.headers.get('x-forwarded-host')
-                info['http_x_forwarded_port'] = request.headers.get('x-forwarded-port')
+                info['http_x_forwarded_host'] = request.headers.get('http-x-forwarded-host')
+                info['http_x_forwarded_port'] = request.headers.get('http-x-forwarded-port')
                 #info['headers'] = request.headers
 
             info['script_name'] = info['path_info']
