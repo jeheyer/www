@@ -24,9 +24,9 @@ def get_request_info(environ={}):
         'text': "Here is some information about your request.",
         'host': environ.get('HTTP_HOST', "localhost:80").split(":")[0],
     }
-    for key, value in FIELDS.items():
-        if value in environ:
-            output[key] = environ.get(value)
+    for k, v in FIELDS.items():
+        if _ := environ.get(v):
+            output[k] = _
     output['server-os'] = platform.system()
     output['server-kernel'] = platform.release()
     output['python-version'] = str(sys.version).split(" ")[0]
