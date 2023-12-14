@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
-from traceback import format_exc
-
+import platform
+import socket
+import os
+import sys
+import traceback
 
 def get_client_ip(headers={}):
 
@@ -24,14 +27,10 @@ def get_client_ip(headers={}):
         return remote_addr
 
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 def ping(headers={}, request=None) -> dict:
-
-    from platform import node, system, release, machine, processor
-    from socket import gethostbyname
-    from sys import version
 
     info = {}
 
@@ -65,8 +64,8 @@ def ping(headers={}, request=None) -> dict:
                 else:
                     continue
 
-            info['server_name'] = node()
-            info['server_addr'] = gethostbyname(info['server_name'])
+            info['server_name'] = platform.node()
+            info['server_addr'] = sock.gethostbyname(info['server_name'])
             info['http_user_agent'] = request.headers.get("User-Agent")
             info['http_connection'] = request.headers.get('Connection')
 
@@ -106,16 +105,16 @@ def ping(headers={}, request=None) -> dict:
             info['script_name'] = info['path_info']
 
         info['client_ip'] = get_client_ip(info)
-        info['platform_node'] = node()
-        info['platform_os'] = "{} {}".format(system(), release())
-        info['platform_cpu'] = str(machine())
-        info['python_info'] = str(version).split()[0]
+        info['platform_node'] = platform.node()
+        info['platform_os'] = "{} {}".format(platform.system(), platform.release())
+        info['platform_cpu'] = str(platform.machine())
+        info['python_info'] = str(sys.version).split()[0]
         #info['environ'] = str(environ)
 
         return info
 
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 def mortgage(options={}):
@@ -125,7 +124,7 @@ def mortgage(options={}):
     try:
         return GetPaymentData(options)
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 async def graffiti(db_name, wall):
@@ -138,7 +137,7 @@ async def graffiti(db_name, wall):
         await db_engine_dispose(engine)
         return posts
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 async def polls(db_name, db_join_table):
@@ -151,7 +150,7 @@ async def polls(db_name, db_join_table):
         await db_engine_dispose(engine)
         return results
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 async def get_table(db_name, db_table=None, db_join_table=None, wall=None):
@@ -164,7 +163,7 @@ async def get_table(db_name, db_table=None, db_join_table=None, wall=None):
         await db_engine_dispose(engine)
         return results
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
     """
@@ -206,7 +205,7 @@ async def get_table(db_name, db_table=None, db_join_table=None, wall=None):
         return rows
 
     except:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 """
 
 
@@ -228,7 +227,7 @@ async def graffiti_post(db_name, wall, graffiti_url=None, name=None, text=None):
         await db_engine_dispose(engine)
         return f"{graffiti_url}?wall={wall}"
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str, choice_id: int):
@@ -291,7 +290,7 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
         return poll_url
 
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 def get_geoip_info(geoiplist=["127.0.0.1"]):
@@ -301,7 +300,7 @@ def get_geoip_info(geoiplist=["127.0.0.1"]):
     try:
         return GeoIPList(geoiplist).geoips
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 def get_dns_servers(token="testing1234"):
@@ -311,12 +310,11 @@ def get_dns_servers(token="testing1234"):
     try:
         return GetDNSServersFromToken(token)
     except Exception as e:
-        raise Exception(format_exc())
+        raise Exception(traceback.format_exc())
 
 
 if __name__ == '__main__':
 
-    from os import environ
     from pprint import pprint
 
-    pprint(ping(environ))
+    pprint(ping(os.environ))
