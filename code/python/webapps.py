@@ -6,7 +6,10 @@ import os
 import sys
 import traceback
 
+
 def get_client_ip(headers={}):
+
+    x_fwd_index = -2
 
     try:
         # Convert all keys to lower case for consistency
@@ -15,15 +18,18 @@ def get_client_ip(headers={}):
         x_real_ip = _.get('http_x_real_ip')
         x_forwarded_for = _.get('http_x_forwarded_for')
         remote_addr = _.get('remote_addr', "127.0.0.1")
+        user_agent = _.get('http_user_agent', 'User-Agent', "Unknown")
 
         if x_appengine_user_ip:
             return x_appengine_user_ip
         if x_real_ip:
             return x_real_ip
         if x_forwarded_for:
+            if user_agent in ['cloudfront']:
+                x_fwd_index -= 1
             if ", " in x_forwarded_for:
-                return x_forwarded_for.split(", ")[-2]
-            return x_forwarded_for
+                x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
+            return x_forwarded_for.strip()
         return remote_addr
 
     except Exception as e:
@@ -65,7 +71,7 @@ def ping(headers={}, request=None) -> dict:
                     continue
 
             info['server_name'] = platform.node()
-            info['server_addr'] = sock.gethostbyname(info['server_name'])
+            info['server_addr'] = socket.gethostbyname(info['server_name'])
             info['http_user_agent'] = request.headers.get("User-Agent")
             info['http_connection'] = request.headers.get('Connection')
 

@@ -1,8 +1,8 @@
 from os import path
 
 READER_FILES = {
-    'city': "../../../db/GeoIP2-City.mmdb",
-    'isp': "../../../db/GeoIP2-ISP.mmdb",
+    'city': "GeoIP2-City.mmdb",
+    'isp': "GeoIP2-ISP.mmdb",
 }
 
 
@@ -11,9 +11,9 @@ class GeoIPList:
     def __init__(self, ip_list):
 
         import geoip2.database
-        
+
         self.geoips = []
-        
+
         reader = {}
 
         pwd = path.realpath(path.dirname(__file__))
@@ -69,7 +69,7 @@ class Host:
             ip = ipaddress.ip_address(param)
             self.ipv4_address = str(ip)
             if ip.is_private or ip.is_reserved:
-                return 
+                return
             else:
                 self.is_routable = True
                 # Try to get reverse DNS hostname
