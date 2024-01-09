@@ -17,8 +17,9 @@ def get_client_ip(headers={}):
         via = _.get('via')
         if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
             return x_appengine_user_ip
-        if x_real_ip := _.get('http_x_real_ip') and not via:
-            return x_real_ip
+        if not via:
+            if x_real_ip := _.get('http_x_real_ip'):
+                return x_real_ip
         if x_forwarded_for := _.get('http_x_forwarded_for'):
             if ", " in x_forwarded_for:
                 x_fwd_index = -3 if via else -2
