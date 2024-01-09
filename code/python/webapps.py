@@ -30,7 +30,7 @@ def get_client_ip(headers: dict = {}) -> str:
         raise Exception(traceback.format_exc())
 
 
-def ping(headers: dict = {}, request: Request = None) -> dict:
+def ping(headers: dict = {}, request = None) -> dict:
 
     info = {}
 

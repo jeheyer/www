@@ -10,7 +10,7 @@ app = Flask(__name__)
 def _ping():
 
     try:
-        data = ping(request.environ)
+        data = ping(headers=request.environ)
         return jsonify(data)
     except Exception as e:
         return Response(format(e), 500, content_type="text/plain")

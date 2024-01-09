@@ -12,10 +12,10 @@ RESPONSE_HEADERS = {
 }
 
 
-def _ping(req: Request):
+def _ping(request: Request):
 
     try:
-        data = ping(request=req)
+        data = ping(headers=requst.headers, request=request)
         return JSONResponse(content=data, headers=RESPONSE_HEADERS)
     except Exception as e:
         return PlainTextResponse(content=format(e), status_code=500)
