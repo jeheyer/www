@@ -38,7 +38,8 @@ def _geoip(req: Request):
             request_headers = {
                 'http_x_real_ip': req.headers.get('X-Real-IP'),
                 'http_x_forwarded_for': req.headers.get('X-Forwarded-For'),
-                'remote_addr': req.client.host
+                'remote_addr': req.client.host,
+                'via': req.headers.get('via'),
             }
             ip_list = [get_client_ip(request_headers)]
         else:

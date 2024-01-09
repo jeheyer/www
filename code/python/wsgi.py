@@ -93,7 +93,13 @@ def _geoip(path=None):
 
     try:
         if not path:
-            ip_list = [get_client_ip(request.environ)]
+            request_headers = {
+                'http_x_real_ip': request.environ.get('X-Real-IP'),
+                'http_x_forwarded_for': request.environ.get('X-Forwarded-For'),
+                'remote_addr': request.environ.host,
+                'via': request.headers.get('via'),
+            }
+            ip_list = [get_client_ip(request_headers)]
         else:
             if '/' in path:
                 ip_list = path.split('/')

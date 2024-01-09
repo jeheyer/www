@@ -5,24 +5,23 @@ import socket
 import os
 import sys
 import traceback
+import re
 
 
 def get_client_ip(headers={}):
 
     try:
-        _ = {k.lower(): v for k, v in headers.items()}
-        if client_ip := _.get('client_ip'):
-            return client_ip
         # Convert all keys to lower case for consistency
-        print(_)
-        user_agent = headers.get('User-Agent', "Unknown").lower()
+        _ = {k.lower(): v for k, v in headers.items()}
+        #print(_)
+        via = _.get('via')
         if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
             return x_appengine_user_ip
-        if x_real_ip := _.get('http_x_real_ip'):
+        if x_real_ip := _.get('http_x_real_ip') and not via:
             return x_real_ip
         if x_forwarded_for := _.get('http_x_forwarded_for'):
             if ", " in x_forwarded_for:
-                x_fwd_index = -1 if user_agent in ['cloudfront'] else -2
+                x_fwd_index = -3 if via else -2
                 x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
             return x_forwarded_for.strip()
         return _.get('remote_addr', "127.0.0.1")
@@ -46,6 +45,7 @@ def ping(headers={}, request=None) -> dict:
 
         # Standard environment variables in dictionary
         if isinstance(headers, dict):
+            info['headers'] = str(headers)
             for header_name in header_names:
                 header_name = header_name.lower()
                 info[header_name] = headers.get(header_name.upper())
