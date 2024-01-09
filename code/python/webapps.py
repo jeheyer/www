@@ -9,28 +9,20 @@ import traceback
 
 def get_client_ip(headers={}):
 
-    x_fwd_index = -2
-
     try:
+        user_agent = headers.get('User-Agent', "Unknown")
         # Convert all keys to lower case for consistency
         _ = {k.lower(): v for k, v in headers.items()}
-        x_appengine_user_ip = _.get('http_x_appengine_user_ip')
-        x_real_ip = _.get('http_x_real_ip')
-        x_forwarded_for = _.get('http_x_forwarded_for')
-        remote_addr = _.get('remote_addr', "127.0.0.1")
-        user_agent = _.get('http_user_agent', 'User-Agent', "Unknown")
-
-        if x_appengine_user_ip:
+        if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
             return x_appengine_user_ip
-        if x_real_ip:
+        if x_real_ip := _.get('http_x_real_ip'):
             return x_real_ip
-        if x_forwarded_for:
-            if user_agent in ['cloudfront']:
-                x_fwd_index -= 1
+        if x_forwarded_for := _.get('http_x_forwarded_for'):
             if ", " in x_forwarded_for:
+                x_fwd_index = -1 if user_agent in ['cloudfront'] else -2
                 x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
             return x_forwarded_for.strip()
-        return remote_addr
+        return _.get('remote_addr', "127.0.0.1")
 
     except Exception as e:
         raise Exception(traceback.format_exc())
