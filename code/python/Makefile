@@ -14,4 +14,3 @@ cloud-build:
 cloud-run-deploy:
 	gcloud config set run/region $(CLOUD_RUN_REGION)
 	gcloud run deploy $(SERVICE_NAME) --image gcr.io/$(GCP_PROJECT_ID)/$(SERVICE_NAME) --allow-unauthenticated
-
