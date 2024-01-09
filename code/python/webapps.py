@@ -14,6 +14,8 @@ def get_client_ip(headers={}):
         # Convert all keys to lower case for consistency
         _ = {k.lower(): v for k, v in headers.items()}
         if not (via := _.get('via')):
+            via = _.get('http_via')
+        if not via:
             if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
                 return x_appengine_user_ip
             if x_real_ip := _.get('http_x_real_ip'):
