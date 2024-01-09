@@ -10,7 +10,7 @@ import traceback
 def get_client_ip(headers={}):
 
     try:
-        user_agent = headers.get('User-Agent', "Unknown")
+        user_agent = headers.get('User-Agent', "Unknown").lower()
         # Convert all keys to lower case for consistency
         _ = {k.lower(): v for k, v in headers.items()}
         if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
