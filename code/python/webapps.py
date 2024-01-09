@@ -10,9 +10,11 @@ import traceback
 def get_client_ip(headers={}):
 
     try:
-        user_agent = headers.get('User-Agent', "Unknown").lower()
+        if client_ip := _.get('client_ip'):
+            return client_ip
         # Convert all keys to lower case for consistency
         _ = {k.lower(): v for k, v in headers.items()}
+        user_agent = headers.get('User-Agent', "Unknown").lower()
         if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
             return x_appengine_user_ip
         if x_real_ip := _.get('http_x_real_ip'):
@@ -98,6 +100,7 @@ def ping(headers={}, request=None) -> dict:
                 info['http_x_forwarded_proto'] = request.headers.get('x-forwarded-proto')
                 info['http_x_forwarded_host'] = request.headers.get('x-forwarded-host')
                 info['http_x_forwarded_port'] = request.headers.get('x-forwarded-port')
+                info['client_ip'] = request.client.host
                 #info['headers'] = request.headers
 
             info['script_name'] = info['path_info']
