@@ -1,8 +1,8 @@
 from os import path
 
 READER_FILES = {
-    'city': "../../../dbGeoIP2-City.mmdb",
-    'isp': "../../../GeoIP2-ISP.mmdb",
+    'city': "../../../db/GeoIP2-City.mmdb",
+    'isp': "../../../db/GeoIP2-ISP.mmdb",
 }
 
 
