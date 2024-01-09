@@ -8,7 +8,7 @@ import traceback
 import re
 
 
-def get_client_ip(headers={}):
+def get_client_ip(headers: dict = {}) -> str:
 
     try:
         # Convert all keys to lower case for consistency
@@ -21,7 +21,7 @@ def get_client_ip(headers={}):
                 return x_real_ip
         if x_forwarded_for := _.get('http_x_forwarded_for'):
             if ", " in x_forwarded_for:
-                x_fwd_index = -3 if via else -2
+                x_fwd_index = -3 if via else -2  # bump an extra level if behind CDN
                 x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
             return x_forwarded_for.strip()
         return _.get('remote_addr', "127.0.0.1")
@@ -30,7 +30,7 @@ def get_client_ip(headers={}):
         raise Exception(traceback.format_exc())
 
 
-def ping(headers={}, request=None) -> dict:
+def ping(headers: dict = {}, request: Request = None) -> dict:
 
     info = {}
 
@@ -119,7 +119,7 @@ def ping(headers={}, request=None) -> dict:
         raise Exception(traceback.format_exc())
 
 
-def mortgage(options={}):
+def mortgage(options: dict = {}) -> dict:
 
     from financial import GetPaymentData
 
@@ -142,7 +142,7 @@ async def graffiti(db_name, wall):
         raise Exception(traceback.format_exc())
 
 
-async def polls(db_name, db_join_table):
+async def polls(db_name: str, db_join_table: str) -> list:
 
     from database import db_engine, db_engine_dispose, db_get_table
 
@@ -155,7 +155,7 @@ async def polls(db_name, db_join_table):
         raise Exception(traceback.format_exc())
 
 
-async def get_table(db_name, db_table=None, db_join_table=None, wall=None):
+async def get_table(db_name: str, db_table: str = None, db_join_table: str = None, wall: str = None) -> list:
 
     from database import db_engine, db_engine_dispose, db_get_table
 
@@ -211,7 +211,7 @@ async def get_table(db_name, db_table=None, db_join_table=None, wall=None):
 """
 
 
-async def graffiti_post(db_name, wall, graffiti_url=None, name=None, text=None):
+async def graffiti_post(db_name: str, wall: str, graffiti_url: str = None, name: str = None, text: str = None):
 
     from database import db_engine, db_engine_dispose, db_insert
 
@@ -232,7 +232,7 @@ async def graffiti_post(db_name, wall, graffiti_url=None, name=None, text=None):
         raise Exception(traceback.format_exc())
 
 
-async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str, choice_id: int):
+async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str, choice_id: int) -> str:
 
     from database import db_engine, db_engine_dispose, db_get_table, db_insert, db_update
 
@@ -295,7 +295,7 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
         raise Exception(traceback.format_exc())
 
 
-def get_geoip_info(geoiplist=["127.0.0.1"]):
+def get_geoip_info(geoiplist: list = ["127.0.0.1"]) -> list:
 
     from geoip import GeoIPList
 
@@ -305,7 +305,7 @@ def get_geoip_info(geoiplist=["127.0.0.1"]):
         raise Exception(traceback.format_exc())
 
 
-def get_dns_servers(token="testing1234"):
+def get_dns_servers(token: str = "testing1234") -> list:
 
     from system_tools import GetDNSServersFromToken
 
