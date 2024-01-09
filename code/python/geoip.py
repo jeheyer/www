@@ -18,7 +18,8 @@ class GeoIPList:
 
         pwd = path.realpath(path.dirname(__file__))
         for reader_type, db_file in READER_FILES.items():
-            reader[reader_type] = geoip2.database.Reader(path.join(pwd, db_file))
+            #reader[reader_type] = geoip2.database.Reader(path.join(pwd, db_file))
+            reader.update({reader_type: geoip2.database.Reader(db_file)})
 
         for _ in ip_list:
             geoip = Host(_)
