@@ -94,10 +94,10 @@ def _geoip(path=None):
     try:
         if not path:
             request_headers = {
-                'http_x_real_ip': request.environ.get('X-Real-IP'),
-                'http_x_forwarded_for': request.environ.get('X-Forwarded-For'),
-                'remote_addr': request.headers.get('REMOTE_ADDR'),
-                'via': request.headers.get('HTTP_VIA'),
+                'http_x_real_ip': request.environ.get('HTTP_X_REAL_IP'),
+                'http_x_forwarded_for': request.environ.get('HTTP_X_FORWARDED_FOR'),
+                'remote_addr': request.environ.get('REMOTE_ADDR'),
+                'via': request.environ.get('HTTP_VIA'),
             }
             ip_list = [get_client_ip(request_headers)]
         else:
