@@ -23,7 +23,7 @@ def get_client_ip(headers={}):
             if ", " in x_forwarded_for:
                 x_fwd_index = -3 if via else -2
                 x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
-                return x_forwarded_for.strip()
+            return x_forwarded_for.strip()
         return _.get('remote_addr', "127.0.0.1")
 
     except Exception as e:
