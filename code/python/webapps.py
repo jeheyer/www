@@ -21,14 +21,17 @@ def get_client_ip(headers: dict = {}) -> str:
         if via := _.get('http_via'):
             behind_cdn = True
         else:
-            if "CloudFront" in _.get('user_agent', "Unknown"):
+            if "cloudfront" in _.get('user_agent', "Unknown").lower():
                 behind_cdn = True
         if not behind_cdn:
             if x_real_ip := _.get('http_x_real_ip'):
                 return x_real_ip
         if x_forwarded_for := _.get('http_x_forwarded_for'):
-            if ", " in x_forwarded_for:
-                x_fwd_index = -3 if behind_cdn else -2
+            if "," in x_forwarded_for:
+                if ", " in x_forwarded_for:
+                    x_fwd_index = -3 if behind_cdn else -2
+                else:
+                    x_fwd_index = -2  # Stupid CloudRun
                 x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
             return x_forwarded_for.strip()
         return _.get('remote_addr', "127.0.0.1")
