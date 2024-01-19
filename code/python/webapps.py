@@ -13,17 +13,22 @@ def get_client_ip(headers: dict = {}) -> str:
     try:
         # Convert all keys to lower case for consistency
         _ = {k.lower(): v for k, v in headers.items()}
-        if not (via := _.get('http_via')):
+
+        behind_cdn = False
+        if via := _.get('http_via'):
+            behind_cdn = True
+        else:
             if user_agent := _.get('http_user_agent'):
-                if 'Amazon CloudFront' in user_agent:
-                    via = True
+                if re.match(r"CloudFront", user_agent):
+                    behind_cdn = True
+        if not behind_cdn:
             if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
                 return x_appengine_user_ip
             if x_real_ip := _.get('http_x_real_ip'):
                 return x_real_ip
         if x_forwarded_for := _.get('http_x_forwarded_for'):
             if ", " in x_forwarded_for:
-                x_fwd_index = -3 if via else -2  # bump an extra level if behind CDN
+                x_fwd_index = -3 if behind_cdn else -2
                 x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
             return x_forwarded_for.strip()
         return _.get('remote_addr', "127.0.0.1")
