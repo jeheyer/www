@@ -98,6 +98,7 @@ def _geoip(path=None):
                 'http_x_forwarded_for': request.environ.get('HTTP_X_FORWARDED_FOR'),
                 'remote_addr': request.environ.get('REMOTE_ADDR'),
                 'http_via': request.environ.get('HTTP_VIA'),
+                'user_agent': request.environ.get('HTTP_USER_AGENT')
             }
             ip_list = [get_client_ip(request_headers)]
         else:

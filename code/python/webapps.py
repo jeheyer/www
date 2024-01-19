@@ -14,16 +14,16 @@ def get_client_ip(headers: dict = {}) -> str:
         # Convert all keys to lower case for consistency
         _ = {k.lower(): v for k, v in headers.items()}
 
+        if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
+            return x_appengine_user_ip.split(',')[0].strip()
+
         behind_cdn = False
         if via := _.get('http_via'):
             behind_cdn = True
         else:
-            if user_agent := _.get('http_user_agent'):
-                if re.match(r"CloudFront", user_agent):
-                    behind_cdn = True
+            if "CloudFront" in _.get('user_agent', "Unknown"):
+                behind_cdn = True
         if not behind_cdn:
-            if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
-                return x_appengine_user_ip
             if x_real_ip := _.get('http_x_real_ip'):
                 return x_real_ip
         if x_forwarded_for := _.get('http_x_forwarded_for'):

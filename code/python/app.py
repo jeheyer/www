@@ -40,6 +40,7 @@ def _geoip(req: Request):
                 'http_x_forwarded_for': req.headers.get('X-Forwarded-For'),
                 'remote_addr': req.client.host,
                 'http_via': req.headers.get('via'),
+                'user_agent': req.headers.get("User-Agent"),
             }
             ip_list = [get_client_ip(request_headers)]
         else:
