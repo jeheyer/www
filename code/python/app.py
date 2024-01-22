@@ -35,6 +35,7 @@ def _geoip(req: Request):
     try:
         ip_list = req.path_params.get('ip_list')
         if not ip_list:
+            response_headers = RESPONSE_HEADERS
             request_headers = {
                 'http_x_real_ip': req.headers.get('X-Real-IP'),
                 'http_x_forwarded_for': req.headers.get('X-Forwarded-For'),
@@ -44,12 +45,13 @@ def _geoip(req: Request):
             }
             ip_list = [get_client_ip(request_headers)]
         else:
+            response_headers = {'Access-Control-Allow-Origin': '*'}
             if '/' in ip_list:
                 ip_list = ip_list.split('/')
             else:
                 ip_list = [ip_list]
         data = get_geoip_info(ip_list)
-        return JSONResponse(content=data, headers=RESPONSE_HEADERS)
+        return JSONResponse(content=data, headers=response_headers)
     except Exception as e:
         return PlainTextResponse(content=format(e), status_code=500)
 
