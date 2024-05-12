@@ -61,7 +61,7 @@ sleep(150);
 
 function PlotDNSResolvers(dns_resolvers = []) {
 
-  let url = "https://code.whamola.net/geoip";
+  let url = "/geoip";
   for (let i = 0; i < dns_resolvers.length; i++) 
       url += "/" + dns_resolvers[i];
   
