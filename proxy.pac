@@ -20,7 +20,7 @@ function FindProxyForURL(url, host)
         return "PROXY " + Proxy + ";";
 
     // Hightail Stuff
-    if (dnsDomainIs(host, ".hightail.com") || dnsDomainIs(host, ".dropbox.com"))
+    if (dnsDomainIs(host, ".hightail.com") || dnsDomainIs(host, ".dropbox.com") || dnsDomainIs(host, ".dropboxstatic.com"))
         return "PROXY " + Proxy + ";"; 
     if (shExpMatch(host, "10.135.*") || shExpMatch(host, "10.41.*.*")) 
         return "PROXY " + Proxy + ";"; 
