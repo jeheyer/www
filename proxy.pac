@@ -1,10 +1,10 @@
 function FindProxyForURL(url, host)
 {
 
-    Proxy = "whamola.net:3128";
+    Proxy = "100.77.77.77:3128";
 
-    // Localhost
-    if (isPlainHostName(host) || localHostOrDomainIs(host, "localhost") || shExpMatch(host, "127.*.*.*"))
+    // Don't use proxy for Localhost
+    if (isPlainHostName(host) || localHostOrDomainIs(host, "localhost") || dnsDomainIs(host, ".localdomain") || shExpMatch(host, "127.*.*.*"))
         return "DIRECT";
 
     // OpenText Stuff not requiring proxy
@@ -20,7 +20,7 @@ function FindProxyForURL(url, host)
         return "PROXY " + Proxy + ";";
 
     // Hightail Stuff
-    if (dnsDomainIs(host, ".ops.hightail.com") || dnsDomainIs(host, ".ops-nonprod.hightail.com"))
+    if (dnsDomainIs(host, ".hightail.com") || dnsDomainIs(host, ".dropbox.com"))
         return "PROXY " + Proxy + ";"; 
     if (shExpMatch(host, "10.135.*") || shExpMatch(host, "10.41.*.*")) 
         return "PROXY " + Proxy + ";"; 
