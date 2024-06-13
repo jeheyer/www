@@ -1,7 +1,7 @@
 function FindProxyForURL(url, host)
 {
 
-    Proxy = "1690.gcp.whamola.net:3128";
+    Proxy = "100.77.77.101:3128";
 
     // Don't use proxy for Localhost
     if (isPlainHostName(host) || localHostOrDomainIs(host, "localhost") || dnsDomainIs(host, ".localdomain") || shExpMatch(host, "127.*.*.*"))
