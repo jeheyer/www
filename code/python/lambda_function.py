@@ -1,9 +1,9 @@
-from lib.http_utils import *
-from lib.makejson import *
+import base64
+import json
+from main import ping
+
 
 def lambda_handler(event, context):
-
-    import base64, json
 
     print(event)
 
@@ -25,14 +25,17 @@ def lambda_handler(event, context):
     }
 
     try:
-        data = main(http_request)
+        data = ping(dict(http_request))
         http_response['statusCode'] = 200
-        if type(data) == dict:
+        if isinstance(data, dict):
             http_response['headers']['Content-Type'] = "application/json"
             http_response['body'] = json.dumps(data)
-        else:
+        elif isinstance(data, str):
             http_response['body'] = format(data)
- 
+        else:
+            http_response['isBase64Encoded'] = True
+            http_response['body'] = base64.b64encode(data).decode("utf-8")
+
     except Exception as e:
 
         http_response['statusCode'] = 500

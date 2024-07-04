@@ -1,12 +1,17 @@
+import re
+import pathlib
+import tomli
+import yaml
+import json
+import configparser
 
-def GetDNSServersFromToken(token="testing1234") -> dict:
 
-    import re
+def get_dns_servers_from_token(token="testing1234") -> dict:
 
     try:
         # Override if this is test token
         if token == "testing1234":
-            dns_resolvers = [ "192.0.2.53", "198.51.100.53", "203.0.113.53" ]
+            dns_resolvers = ["192.0.2.53", "198.51.100.53", "203.0.113.53"]
         else:
             # Open the BIND log file for A record queries
             dns_resolvers = []
@@ -25,124 +30,36 @@ def GetDNSServersFromToken(token="testing1234") -> dict:
         raise Exception(e)
 
 
-def GetConfig(type, key = None):
+def read_file(file_name: str) -> dict:
 
-    import configparser
-
-    # Read config file
-    config = configparser.ConfigParser()
-    config.read('/web/private/cfg/{}.cfg'.format(type))
-
-    if key:
-        return config[key]
-    return config
-
-def ReadFromHTTPS(hostname, path):
-
-    import http.client
-    import ssl
-
-    lines = []
-
-    try: 
-        ssl_context = ssl._create_unverified_context()
-        conn = http.client.HTTPSConnection(hostname, port = 443, timeout = 3, context = ssl_context)
-        #conn = http.client.HTTPConnection(hostname, port = 80, timeout = 3)
-        conn.request(method = "GET", url = path)
-        resp = conn.getresponse()
-        lines = resp.read().decode("utf-8").rstrip().splitlines()
-    except Exception as e:
-        return e        
-    conn.close()
-    return lines
-
-def ReadFromGoogleCloudStorage(bucket_name, file_name):
-
-    from google.cloud import storage
-
-    lines = []
+    file_format = file_name.split('.')[-1].lower()  # Auto-determine file type by examining extension
 
     try:
-        storage_client = storage.Client()
-        bucket = storage_client.bucket(bucket_name)
-        blob = bucket.blob(file_name)
-        return blob.download_as_string().decode("utf-8").rstrip().splitlines()
-        #out_file = "/var/tmp/" + file_name.split("/")[-1]
-        #blob.download_to_filename(out_file)
-        #print(out_file)
+        if path := pathlib.Path(file_name):
+            print(path.as_posix())
+            if not path.is_file() or path.stat().st_size == 0:
+                return {}
+            with open(path.as_posix(), mode="rb") as fp:
+                match file_format:
+                    case 'yaml':
+                        return yaml.load(fp, Loader=yaml.FullLoader)
+                    case 'json':
+                        return json.load(fp)
+                    case 'toml':
+                        return tomli.load(fp)
+                    case 'cfg':
+                        config = configparser.ConfigParser()
+                        return {i: v for i, v in enumerate(config.read())}
+                    case _:
+                        fp.close()
+                        raise f"unhandled file format '{file_format}'"
     except Exception as e:
-        raise(e)
+        raise e
 
-    return lines
+    return {}
 
-def ReadFromS3(bucket_name, file_name):
 
-    import boto3
-    return None
 
-def ProcessBlob(source_name = None, lines = []):
-
-    from time import time
-    from math import floor
-
-    #now = math.floor(time.time())
-    now = 1614968742
-    threshold = now - 7200 
-
-    entries = []
-    for l in range(len(lines)-1, 0, -1):
-        line = lines[l]
-        parts = line.split()
-        if int(parts[0].split('.')[0]) > threshold:
-            entry = {'reporter': source_name, 'data': parts}
-            #for i in range(0,len(fields)):
-            #    if i == 0:
-            #        datetimestr = datetime.fromtimestamp(int(parts[0].split(".")[0]), tz=None)
-            #        entry['timestamp'] = datetimestr.strftime("%d-%m-%y %H:%M:%S")
-            #    else:
-            #        entry[fields[i]] = parts[i]
-            entries.append(entry)
-        else:
-            break
-
-    return entries
-
-def ReadFromFile(file_name):
-
-    #import mmap
-
-    lines = []
-    f = open(file_name)
-    return f.readlines()
-
-    #with open(file_name, 'r+') as f:
-    #    for line in f:
-    #        lines.append(line)
-    #return lines
-
-    #with open(file_name, 'r') as f:
-    #    for piece in read_in_chunks(f):
-    #        lines.append(piece)
-
-    #for line in open(file_name):
-    #    lines.append(line)
-    #return lines
-
-    #with open(file_name, "r+") as f:
-    #    map = mmap.mmap(f.fileno(), 0)
-    #    map.close()
-
-    #return lines
-
-def ReadInput(file_name: str) -> (list, str):
-
-    lines = []
-    f = open(file_name)
-    lines = f.readlines()
-
-    file_ext = file_name.split(".")[-1]
-
-    return (lines, file_ext)
 
 def ConvertToDict(contents: list, file_type: str) -> list:
 

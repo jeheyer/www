@@ -2,31 +2,29 @@
 
 import platform
 import socket
-import os
 import sys
 import traceback
-import re
 
 
-def get_client_ip(headers: dict = {}) -> str:
+def get_client_ip(headers: dict = None) -> str:
 
     try:
         # Convert all keys to lower case for consistency
-        _ = {k.lower(): v for k, v in headers.items()}
+        headers = {k.lower(): v for k, v in headers.items()}
 
-        if x_appengine_user_ip := _.get('http_x_appengine_user_ip'):
+        if x_appengine_user_ip := headers.get('http_x_appengine_user_ip'):
             return x_appengine_user_ip.split(',')[0].strip()
 
         behind_cdn = False
-        if via := _.get('http_via'):
+        if via := headers.get('http_via'):
             behind_cdn = True
         else:
-            if "cloudfront" in _.get('user_agent', "Unknown").lower():
+            if "cloudfront" in headers.get('user_agent', "Unknown").lower():
                 behind_cdn = True
         if not behind_cdn:
-            if x_real_ip := _.get('http_x_real_ip'):
+            if x_real_ip := headers.get('http_x_real_ip'):
                 return x_real_ip
-        if x_forwarded_for := _.get('http_x_forwarded_for'):
+        if x_forwarded_for := headers.get('http_x_forwarded_for'):
             if "," in x_forwarded_for:
                 if ", " in x_forwarded_for:
                     x_fwd_index = -3 if behind_cdn else -2
@@ -40,7 +38,7 @@ def get_client_ip(headers: dict = {}) -> str:
         raise Exception(traceback.format_exc())
 
 
-def ping(headers: dict = {}, request: any = None) -> dict:
+def ping(headers: dict = None, request: any = None) -> dict:
 
     info = {}
 
@@ -59,10 +57,10 @@ def ping(headers: dict = {}, request: any = None) -> dict:
             for header_name in header_names:
                 header_name = header_name.lower()
                 info[header_name] = headers.get(header_name.upper())
-            if not 'request_uri' in info:
-                 info['request_uri'] = headers.get('RAW_URI')
-            if not 'raw_uri' in info:
-                 info['raw_uri'] = headers.get('REQUEST_URI')
+            if 'request_uri' not in info:
+                info['request_uri'] = headers.get('RAW_URI')
+            if 'raw_uri' not in info:
+                info['raw_uri'] = headers.get('REQUEST_URI')
 
         # Request object
         if request:
@@ -129,7 +127,7 @@ def ping(headers: dict = {}, request: any = None) -> dict:
         raise Exception(traceback.format_exc())
 
 
-def mortgage(options: dict = {}) -> dict:
+def mortgage(options: dict = None) -> dict:
 
     from financial import GetPaymentData
 
@@ -317,10 +315,11 @@ def get_geoip_info(geoiplist: list = ["127.0.0.1"]) -> list:
 
 def get_dns_servers(token: str = "testing1234") -> list:
 
-    from system_tools import GetDNSServersFromToken
+    from system_tools import get_dns_servers_from_token
 
     try:
-        return GetDNSServersFromToken(token)
+        _ = get_dns_servers_from_token(token)
+        return _.get('dns_resolvers', [])
     except Exception as e:
         raise Exception(traceback.format_exc())
 
@@ -328,5 +327,8 @@ def get_dns_servers(token: str = "testing1234") -> list:
 if __name__ == '__main__':
 
     from pprint import pprint
+    from os import environ
 
-    pprint(ping(os.environ))
+    _ = dict(environ)
+    pprint(ping(_))
+

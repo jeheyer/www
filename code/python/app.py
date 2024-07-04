@@ -15,7 +15,7 @@ RESPONSE_HEADERS = {
 def _ping(request: Request):
 
     try:
-        data = ping(headers=request.headers, request=request)
+        data = ping(headers=dict(request.headers), request=request)
         return JSONResponse(content=data, headers=RESPONSE_HEADERS)
     except Exception as e:
         return PlainTextResponse(content=format(e), status_code=500)

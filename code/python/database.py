@@ -1,35 +1,40 @@
+from sqlalchemy import Table, MetaData, update, select
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+from os import path
+from system_tools import read_file
+
 
 async def db_engine(db_name):
 
-    from os import path
-    from tomli import load
-    from sqlalchemy.ext.asyncio import create_async_engine
+    db_config = {}
+
+    #pwd = path.realpath(path.dirname(__file__))
+
+    for cfg_dir in ["..", "../..", "../../..", "../../../.."]:
+        try:
+            _ = cfg_dir + "/private/cfg/db_config.toml"
+            if db_config := read_file(_):
+                break
+        except Exception as e:
+            continue
+    assert db_config, "Database config file could not be opened"
+    if not (db_info := db_config.get(db_name)):
+        raise Exception(f"Database config not found for '{db_name}'")
+
+    # Connect to DB
+    db_hostname = db_info.get('hostname', "127.0.0.1")
+    db_username = db_info.get('username', "root")
+    db_password = db_info.get('password', "")
+    db_type = db_info.get('driver', "mysql").lower()
+    match db_type:
+        case "mysql":
+            db_driver = "mysql+asyncmy"
+        case _:
+            db_driver = None
 
     try:
-        # Get Database connection info
-        db_info = {}
-        fp = None
-        for cfg_dir in ["..", "../..", "../../.."]:
-            pwd = path.realpath(path.dirname(__file__))
-            if path.isfile(cfg_file := path.join(pwd, cfg_dir + "/private/cfg/db_config.toml")):
-                fp = open(cfg_file, mode="rb")
-                db_info = load(fp).get(db_name)
-                break
-        if not fp:
-            raise Exception("Database config file could not be opened")
-        if not db_info:
-            raise Exception(f"Database config not found for '{db_name}'")
-
-        # Connect to DB
-        db_hostname = db_info.get('hostname', "127.0.0.1")
-        db_username = db_info.get('username', "root")
-        db_password = db_info.get('password', "")
-        db_type = db_info.get('driver', "mysql").lower()
-        if db_type == "mysql":
-            db_driver = "mysql+asyncmy"
         engine = create_async_engine("{}://{}:{}@{}/{}".format(db_driver, db_username, db_password, db_hostname, db_name))
         return engine
-
     except Exception as e:
         raise e
 
@@ -45,8 +50,6 @@ async def db_engine_dispose(engine=None, session=None):
 
 async def db_insert(engine, table_name, values={}):
 
-    from sqlalchemy import Table, MetaData
-
     try:
         async with engine.begin() as conn:
             table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
@@ -59,8 +62,6 @@ async def db_insert(engine, table_name, values={}):
 
 
 async def db_update(engine, table_name, column_name, value, values={}):
-
-    from sqlalchemy import Table, MetaData, update
 
     try:
         async with engine.begin() as conn:
@@ -77,9 +78,6 @@ async def db_update(engine, table_name, column_name, value, values={}):
 
 
 async def db_get_table(engine, table_name, join_table_name=None, where={}, order_by={}):
-
-    from sqlalchemy import Table, MetaData, select
-    from sqlalchemy.ext.asyncio import AsyncSession
 
     try:
 

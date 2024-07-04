@@ -1,11 +1,12 @@
-import math
+from datetime import date
+
 
 def GetColumn(matrix, column_n):
     return [row[column_n] for row in matrix]
 
-def GetPaymentData(options = {}):
 
-    from datetime import date
+def GetPaymentData(options = None) -> dict:
+
     today = date.today()
 
     # Fill in default values if field was not provided
@@ -23,7 +24,14 @@ def GetPaymentData(options = {}):
     # Loan duration (in months)
     numberOfPayments = years * 12
 
-    data = dict(loanAmount = loanAmount, years = years, startYear = startYear, startMonth = startMonth, numberOfPayments = numberOfPayments, interestRate = interestRate)
+    data = {
+        'loanAmount': loanAmount,
+        'years': years,
+        'startYear': startYear,
+        'startMonth': startMonth,
+        'numberOfPayments': numberOfPayments,
+        'interestRate': interestRate,
+    }
 
     # Calculate overall loan stuff
     c = interestRate / 1200
@@ -33,7 +41,9 @@ def GetPaymentData(options = {}):
     data.update(dict(monthlyPayment = monthlyPayment, sumOfPayments = sumOfPayments, sumOfInterestPayments = sumOfInterestPayments))
 
     year = startYear
-    payments = []; paymentBreakdown = []; remainingBalances = []
+    payments = []
+    paymentBreakdown = []
+    remainingBalances = []
     remainingBalances.append(loanAmount)
 
     for y in range(0, years + 1):
