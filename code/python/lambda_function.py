@@ -1,6 +1,6 @@
 import base64
 import json
-from main import ping
+from webapps import ping
 
 
 def lambda_handler(event, context):
