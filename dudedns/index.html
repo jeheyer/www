@@ -117,9 +117,8 @@ fetch(tokenRequest).then(response => {
     throw new TypeError("Did not receive valid JSON from backend");
   return response.json();
 }).then(data => {
-  dns_resolvers = data.dns_resolvers;
-  console.log(`Found ${dns_resolvers.length} DNS resolvers for token: '${token}'`);
-  PlotDNSResolvers(dns_resolvers);
+  console.log(`Found ${data.length} DNS resolvers for token: '${token}'`);
+  PlotDNSResolvers(data);
 }).catch((error) => {
   console.error('Error:', error);
 });
