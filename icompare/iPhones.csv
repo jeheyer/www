@@ -1,0 +1,44 @@
+,Release Year,Chip,CPU speed,Core,RAM,Battery,weight,Rear Cam,Front Cam,Cellular,Wifi,Bluetooth,digital zoom,Video Res,HDR Video,ppi,Waterproof,Charging,Charging Max W,Connector Type
+iPhone XR,2018,A12,2.5,Hexa-Core,3 GB,2942,,12 MP,7 MP,"LTE, GSM/EDGE",5,5,5x,4k 60 fps,No,326,IP67,Qi Wireless,20,Lightning
+Phone XS,2018,A12,2.5,Hexa-Core,4 GB,2658,,12 MP,7 MP,"LTE, GSM/EDGE",5,5,,4k 60 fps,Yes,458,IP68,Qi Wireless,20,Lightning
+Phone XS Max,2018,A12,2.5,Hexa-Core,4 GB,3174,,12 MP,7 MP,"LTE, GSM/EDGE",5,5,,4k 60 fps,Yes,458,IP68,Qi Wireless,20,Lightning
+iPhone 11,2019,A13,2.65,Hexa-Core,4 GB,3110,194,12 MP,12 MP,"LTE, GSM/EDGE",6,5,5x,,No,326,IP67,Qi Wireless,18,Lightning
+iPhone 11 Pro,2019,A13,2.65,Hexa-Core,4 GB,3046,188,12 MP,12 MP,"LTE, GSM/EDGE",6,5,,,Next Gen HDR,458,IP68,Qi Wireless,18,Lightning
+iPhone 12,2020,A14,3.1,Hexa-Core,4 GB,2815,162,12 MP,12 MP,"LTE, GSM/EDGE",6,5,5x,,Yes,460,IP68,Qi Wireless & MagSafe,20,Lightning
+iPhone 12 Pro,2020,A14,3.1,Hexa-Core,6 GB,2815,189,12 MP,12 MP,"LTE, GSM/EDGE",6,5,10x,,Smart HDR 3,460,IP68,Qi Wireless & MagSafe,20,Lightning
+iPhone 13,2021,A15,3.23,Hexa-Core,4 GB,3095,174,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5,,,Yes,460,IP68,Qi Wireless & MagSafe,20,Lightning
+iPhone 13 Pro,2021,A15,3.23,Hexa-Core,6 GB,3227,204,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5,,,Yes,460,IP68,Qi Wireless & MagSafe,20,Lightning
+iPhone 14,2022,A15,3.23,Hexa-Core,6 GB,3279,172,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5.3,,,,460,IP68,Qi Wireless & MagSafe,20,Lightning
+iPhone 14 Pro,2022,A16,3.46,Hexa-Core,6 GB,3200,206,48 MP,12 MP,"5G, LTE, GSM/EDGE",6,5.3,,,,460,IP68,Qi Wireless & MagSafe,20,Lightning
+iPhone 15,2023,A16,3.46,Hexa-Core,6 GB,3349,171,48 MP,12 MP,"5G, LTE, GSM/EDGE",6,5.3,,,,460,IP68,Qi Wireless & MagSafe,20,Lightning
+iPhone 15 Pro,2023,A17,3.78,Hexa-Core,8 GB,3274,187,48 MP,12 MP,"5G, LTE, GSM/EDGE",6,5.3,,,,460,IP68,Qi Wireless & MagSafe,20,Lightning
+IPhone 8,2017,A11,2.4,Hexa-Core,2 GB,1821,,12 MP,7 MP,"LTE, GSM/EDGE",5,5,,4k 60fps,Smart HDR,326,IP67,Qi Wireless,20,Lightning
+IPhone 8 Plus,2017,A11,2.4,Hexa-Core,3 GB,2691,,12 MP,7 MP,"LTE, GSM/EDGE",5,5,,4k 60fps,Smart HDR,401,IP67,Qi Wireless,20,Lightning
+IPhone 7,2016,A10,2.33,Quad-Core,2 GB,1960,138,12 MP,7 MP,"LTE, GSM/EDGE",5,4.2,5x,4k 30fps,No,326,IP67,Standard,12,Lightning
+IPhone 7 Plus,2016,A10,2.33,Quad-Core,3 GB,2900,188,12 MP,7 MP,"LTE, GSM/EDGE",5,4.2,10x,4k 30fps,No,401,IP67,Standard,12,Lightning
+IPhone 6S,2015,A9,1.85,Dual-Core,2 GB,1715,143,12 MP,5 MP,"LTE, GSM/EDGE",4,4.2,,1080 HD,No,326,No,Standard,12,Lightning
+IPhone 6S Plus,2015,A9,1.85,Dual-Core,2 GB,2750,192,12 MP,5 MP,"LTE, GSM/EDGE",4,4.2,,1080 HD,No,401,No,Standard,12,Lightning
+iPhone SE3,2022,A15,3.2,Hexa-Core,4 GB,2018,144,12MP,7 MP,"5G, LTE, GSM/EDGE",6,5,,4k 60fps,Yes,326,IP67,Qi Wireless,20,Lightning
+iPhone SE2,2020,A13,2.65,Hexa-Core,3 GB,1821,148,12 MP,7 MP,"LTE, GSM/EDGE",6,5,,4k 60fps,No,326,IP67,Qi Wireless,20,Lightning
+iPhone SE,2016,A9,1.85,Dual-Core,2 GB,1624,113,12 MP,1.2 MP,"LTE, GSM/EDGE",4,4.2,,1080 HD,No,326,No,Standard,20,Lightning
+iPad Air 6,2024,M2,3.5,Octa-Core,8 GB,,461,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5,,4k 60fps,No,264,No,Standard,20,USB-C
+iPad Air 5,2022,M1,3.2,Octa-Core,8 GB,,461,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5,,4k 60fps,No,264,No,Standard,20,USB-C
+iPad Air 4,2020,A14,3.1,Hexa-Core,4 GB,7606,458,12 MP,12 MP,"LTE, GSM/EDGE",6,5,,4k 60fps,No,264,No,Standard,20,USB-C
+iPad Air 3,2019,A12,2.5,Hexa-Core,3 GB,8134,456,8 MP,7 MP,"LTE, GSM/EDGE",5,5,,1080 HD,No,264,No,Standard,18,Lightning
+iPad Air 2,2014,A8X,1.5,Triple-Core,2 GB,7340,437,8 MP,7 MP,"LTE, GSM/EDGE",5,4.2,,1080 HD,No,264,No,Standard,12,Lightning
+iPad 10,2022,A14,3,Hexa-Core,4 GB,7606,477,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5.2,3x,1080 HD,Yes,264,No,Standard,20,USB-C
+IPad 9,2021,A13,2.65,Hexa-Core,3 GB,8557,487,12 MP,12 MP,"LTE, GSM/EDGE",5,4.2,3x,1080 HD,Yes,264,No,Standard,20,USB-C
+IPad 8,2020,A12,2.5,Hexa-Core,3 GB,,,1.2 MP,8 MP,"LTE, GSM/EDGE",5,4.2,3x,1080 HD,Yes,264,No,Standard,20,Lightning
+IPad 7,2019,A10,2.33,Quad-Core,3 GB,,490,1.2 MP,8 MP,"LTE, GSM/EDGE",5,4.2,3x,1080 HD,Yes,264,No,Standard,12,Lightning
+IPad 6,2018,A10,2.33,Quad-Core,2 GB,,469,1.2 MP,8 MP,"LTE, GSM/EDGE",5,4.2,3x,1080 HD,Yes,264,No,Standard,12,Lightning
+IPad 5,2017,A9,1.85,Dual-Core,2 GB,,469,1.2 MP,8 MP,"LTE, GSM/EDGE",5,4.2,3x,1080 HD,Yes,264,No,Standard,12,Lightning
+iPad Mini 6,2021,A15,3,Hexa-Core,4 GB,5124,293,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5,3x,4k 60fps,Yes,326,No,Standard,20,USB-C
+iPad Mini 5 ,2019,A12,2.5,Hexa-Core,3 GB,5124,300,8 MP,7 MP,"LTE, GSM/EDGE",5,5,3x,1080 HD,No,326,No,Standard,18,Lightning
+iPad Mini 4,2015,A8X,1.5,Dual-Core,2 GB,5124,298,8 MP,1.2 MP,"LTE, GSM/EDGE",5,4.2,3x,1080 HD,No,326,No,Standard,12,Lightning
+iPad Pro 7,2024,M4,,Octa-Core,8 GB,,444,12 MP,12 MP,"5G, LTE, GSM/EDGE",6E,5.3,,,,,,,,
+iPad Pro 6,2022,M2,,Octa-Core,8 GB,,466,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5.3,,,,,,,,USB-C
+iPad Pro 5,2021,M1,,Octa-Core,8 GB,,466,12 MP,12 MP,"5G, LTE, GSM/EDGE",6,5,,,,,,,,
+iPad Pro 4,2020,A12Z,,Octa-Core,6 GB,,,12 MP,7 MP,,,,,,,,,,,
+iPad Pro 3,2018,A12X,,Octa-Core,4 GB,7812,468,12 MP,7 MP,"LTE, GSM/EDGE",5,5,,,,,,,,USB-C
+iPad Pro 2,2017,A10X,,,4 GB,,,,,"LTE, GSM/EDGE",5,4.2,,,,,,,,
+iPad Pro 1,2015,A9X,2.26,Dual-Core,2 GB,10307,713,8 MP,,"LTE, GSM/EDGE",5,4,,,,,,,,

@@ -1,6 +1,7 @@
 [
   {
     "name": "iPhone XR",
+    "Release Year": "2018",
     "Chip": "A12",
     "CPU speed": "2.5",
     "Core": "Hexa-Core",
@@ -23,6 +24,7 @@
   },
   {
     "name": "Phone XS",
+    "Release Year": "2018",
     "Chip": "A12",
     "CPU speed": "2.5",
     "Core": "Hexa-Core",
@@ -45,6 +47,7 @@
   },
   {
     "name": "Phone XS Max",
+    "Release Year": "2018",
     "Chip": "A12",
     "CPU speed": "2.5",
     "Core": "Hexa-Core",
@@ -67,6 +70,7 @@
   },
   {
     "name": "iPhone 11",
+    "Release Year": "2019",
     "Chip": "A13",
     "CPU speed": "2.65",
     "Core": "Hexa-Core",
@@ -89,6 +93,7 @@
   },
   {
     "name": "iPhone 11 Pro",
+    "Release Year": "2019",
     "Chip": "A13",
     "CPU speed": "2.65",
     "Core": "Hexa-Core",
@@ -111,6 +116,7 @@
   },
   {
     "name": "iPhone 12",
+    "Release Year": "2020",
     "Chip": "A14",
     "CPU speed": "3.1",
     "Core": "Hexa-Core",
@@ -133,6 +139,7 @@
   },
   {
     "name": "iPhone 12 Pro",
+    "Release Year": "2020",
     "Chip": "A14",
     "CPU speed": "3.1",
     "Core": "Hexa-Core",
@@ -155,6 +162,7 @@
   },
   {
     "name": "iPhone 13",
+    "Release Year": "2021",
     "Chip": "A15",
     "CPU speed": "3.23",
     "Core": "Hexa-Core",
@@ -177,6 +185,7 @@
   },
   {
     "name": "iPhone 13 Pro",
+    "Release Year": "2021",
     "Chip": "A15",
     "CPU speed": "3.23",
     "Core": "Hexa-Core",
@@ -199,6 +208,7 @@
   },
   {
     "name": "iPhone 14",
+    "Release Year": "2022",
     "Chip": "A15",
     "CPU speed": "3.23",
     "Core": "Hexa-Core",
@@ -221,6 +231,7 @@
   },
   {
     "name": "iPhone 14 Pro",
+    "Release Year": "2022",
     "Chip": "A16",
     "CPU speed": "3.46",
     "Core": "Hexa-Core",
@@ -243,6 +254,7 @@
   },
   {
     "name": "iPhone 15",
+    "Release Year": "2023",
     "Chip": "A16",
     "CPU speed": "3.46",
     "Core": "Hexa-Core",
@@ -265,6 +277,7 @@
   },
   {
     "name": "iPhone 15 Pro",
+    "Release Year": "2023",
     "Chip": "A17",
     "CPU speed": "3.78",
     "Core": "Hexa-Core",
@@ -287,6 +300,7 @@
   },
   {
     "name": "IPhone 8",
+    "Release Year": "2017",
     "Chip": "A11",
     "CPU speed": "2.4",
     "Core": "Hexa-Core",
@@ -309,6 +323,7 @@
   },
   {
     "name": "IPhone 8 Plus",
+    "Release Year": "2017",
     "Chip": "A11",
     "CPU speed": "2.4",
     "Core": "Hexa-Core",
@@ -331,6 +346,7 @@
   },
   {
     "name": "IPhone 7",
+    "Release Year": "2016",
     "Chip": "A10",
     "CPU speed": "2.33",
     "Core": "Quad-Core",
@@ -353,6 +369,7 @@
   },
   {
     "name": "IPhone 7 Plus",
+    "Release Year": "2016",
     "Chip": "A10",
     "CPU speed": "2.33",
     "Core": "Quad-Core",
@@ -375,6 +392,7 @@
   },
   {
     "name": "IPhone 6S",
+    "Release Year": "2015",
     "Chip": "A9",
     "CPU speed": "1.85",
     "Core": "Dual-Core",
@@ -397,6 +415,7 @@
   },
   {
     "name": "IPhone 6S Plus",
+    "Release Year": "2015",
     "Chip": "A9",
     "CPU speed": "1.85",
     "Core": "Dual-Core",
@@ -419,6 +438,7 @@
   },
   {
     "name": "iPhone SE3",
+    "Release Year": "2022",
     "Chip": "A15",
     "CPU speed": "3.2",
     "Core": "Hexa-Core",
@@ -441,6 +461,7 @@
   },
   {
     "name": "iPhone SE2",
+    "Release Year": "2020",
     "Chip": "A13",
     "CPU speed": "2.65",
     "Core": "Hexa-Core",
@@ -463,6 +484,7 @@
   },
   {
     "name": "iPhone SE",
+    "Release Year": "2016",
     "Chip": "A9",
     "CPU speed": "1.85",
     "Core": "Dual-Core",
@@ -484,13 +506,37 @@
     "Connector Type": "Lightning"
   },
   {
+    "name": "iPad Air 6",
+    "Release Year": "2024",
+    "Chip": "M2",
+    "CPU speed": "3.5",
+    "Core": "Octa-Core",
+    "RAM": "8 GB",
+    "Battery": "",
+    "weight": "461",
+    "Rear Cam": "12 MP",
+    "Front Cam": "12 MP",
+    "Cellular": "5G, LTE, GSM/EDGE",
+    "Wifi": "6",
+    "Bluetooth": "5",
+    "digital zoom": "",
+    "Video Res": "4k 60fps",
+    "HDR Video": "No",
+    "ppi": "264",
+    "Waterproof": "No",
+    "Charging": "Standard",
+    "Charging Max W": "20",
+    "Connector Type": "USB-C"
+  },
+  {
     "name": "iPad Air 5",
+    "Release Year": "2022",
     "Chip": "M1",
     "CPU speed": "3.2",
     "Core": "Octa-Core",
     "RAM": "8 GB",
     "Battery": "",
-    "weight": "",
+    "weight": "461",
     "Rear Cam": "12 MP",
     "Front Cam": "12 MP",
     "Cellular": "5G, LTE, GSM/EDGE",
@@ -507,6 +553,7 @@
   },
   {
     "name": "iPad Air 4",
+    "Release Year": "2020",
     "Chip": "A14",
     "CPU speed": "3.1",
     "Core": "Hexa-Core",
@@ -529,6 +576,7 @@
   },
   {
     "name": "iPad Air 3",
+    "Release Year": "2019",
     "Chip": "A12",
     "CPU speed": "2.5",
     "Core": "Hexa-Core",
@@ -551,6 +599,7 @@
   },
   {
     "name": "iPad Air 2",
+    "Release Year": "2014",
     "Chip": "A8X",
     "CPU speed": "1.5",
     "Core": "Triple-Core",
@@ -572,7 +621,8 @@
     "Connector Type": "Lightning"
   },
   {
-    "name": "iPad 10 (2022)",
+    "name": "iPad 10",
+    "Release Year": "2022",
     "Chip": "A14",
     "CPU speed": "3",
     "Core": "Hexa-Core",
@@ -594,7 +644,8 @@
     "Connector Type": "USB-C"
   },
   {
-    "name": "IPad 9 (2021)",
+    "name": "IPad 9",
+    "Release Year": "2021",
     "Chip": "A13",
     "CPU speed": "2.65",
     "Core": "Hexa-Core",
@@ -616,7 +667,8 @@
     "Connector Type": "USB-C"
   },
   {
-    "name": "IPad 8 (2020)",
+    "name": "IPad 8",
+    "Release Year": "2020",
     "Chip": "A12",
     "CPU speed": "2.5",
     "Core": "Hexa-Core",
@@ -638,7 +690,8 @@
     "Connector Type": "Lightning"
   },
   {
-    "name": "IPad 7 (2019)",
+    "name": "IPad 7",
+    "Release Year": "2019",
     "Chip": "A10",
     "CPU speed": "2.33",
     "Core": "Quad-Core",
@@ -660,7 +713,8 @@
     "Connector Type": "Lightning"
   },
   {
-    "name": "IPad 6 (2018)",
+    "name": "IPad 6",
+    "Release Year": "2018",
     "Chip": "A10",
     "CPU speed": "2.33",
     "Core": "Quad-Core",
@@ -682,7 +736,8 @@
     "Connector Type": "Lightning"
   },
   {
-    "name": "IPad 5 (2017)",
+    "name": "IPad 5",
+    "Release Year": "2017",
     "Chip": "A9",
     "CPU speed": "1.85",
     "Core": "Dual-Core",
@@ -704,7 +759,8 @@
     "Connector Type": "Lightning"
   },
   {
-    "name": "iPad Mini 6 (2021)",
+    "name": "iPad Mini 6",
+    "Release Year": "2021",
     "Chip": "A15",
     "CPU speed": "3",
     "Core": "Hexa-Core",
@@ -726,7 +782,8 @@
     "Connector Type": "USB-C"
   },
   {
-    "name": "iPad Mini 5 (2019)",
+    "name": "iPad Mini 5 ",
+    "Release Year": "2019",
     "Chip": "A12",
     "CPU speed": "2.5",
     "Core": "Hexa-Core",
@@ -748,7 +805,8 @@
     "Connector Type": "Lightning"
   },
   {
-    "name": "iPad Mini 4 (2015)",
+    "name": "iPad Mini 4",
+    "Release Year": "2015",
     "Chip": "A8X",
     "CPU speed": "1.5",
     "Core": "Dual-Core",
@@ -770,13 +828,37 @@
     "Connector Type": "Lightning"
   },
   {
-    "name": "iPad Pro 12.9 (2022)",
+    "name": "iPad Pro 7",
+    "Release Year": "2024",
+    "Chip": "M4",
+    "CPU speed": "",
+    "Core": "Octa-Core",
+    "RAM": "8 GB",
+    "Battery": "",
+    "weight": "444",
+    "Rear Cam": "12 MP",
+    "Front Cam": "12 MP",
+    "Cellular": "5G, LTE, GSM/EDGE",
+    "Wifi": "6E",
+    "Bluetooth": "5.3",
+    "digital zoom": "",
+    "Video Res": "",
+    "HDR Video": "",
+    "ppi": "",
+    "Waterproof": "",
+    "Charging": "",
+    "Charging Max W": "",
+    "Connector Type": ""
+  },
+  {
+    "name": "iPad Pro 6",
+    "Release Year": "2022",
     "Chip": "M2",
     "CPU speed": "",
     "Core": "Octa-Core",
-    "RAM": "",
-    "Battery": "10758",
-    "weight": "682",
+    "RAM": "8 GB",
+    "Battery": "",
+    "weight": "466",
     "Rear Cam": "12 MP",
     "Front Cam": "12 MP",
     "Cellular": "5G, LTE, GSM/EDGE",
@@ -792,18 +874,19 @@
     "Connector Type": "USB-C"
   },
   {
-    "name": "iPad Pro 12.9 (2015)",
-    "Chip": "A9X",
+    "name": "iPad Pro 5",
+    "Release Year": "2021",
+    "Chip": "M1",
     "CPU speed": "",
-    "Core": "Dual-Core",
-    "RAM": "",
-    "Battery": "10307",
-    "weight": "713",
-    "Rear Cam": "8 MP",
-    "Front Cam": "",
-    "Cellular": "LTE, GSM/EDGE",
-    "Wifi": "5",
-    "Bluetooth": "4",
+    "Core": "Octa-Core",
+    "RAM": "8 GB",
+    "Battery": "",
+    "weight": "466",
+    "Rear Cam": "12 MP",
+    "Front Cam": "12 MP",
+    "Cellular": "5G, LTE, GSM/EDGE",
+    "Wifi": "6",
+    "Bluetooth": "5",
     "digital zoom": "",
     "Video Res": "",
     "HDR Video": "",
@@ -814,11 +897,35 @@
     "Connector Type": ""
   },
   {
-    "name": "iPad Pro 11 (2018)",
+    "name": "iPad Pro 4",
+    "Release Year": "2020",
+    "Chip": "A12Z",
+    "CPU speed": "",
+    "Core": "Octa-Core",
+    "RAM": "6 GB",
+    "Battery": "",
+    "weight": "",
+    "Rear Cam": "12 MP",
+    "Front Cam": "7 MP",
+    "Cellular": "",
+    "Wifi": "",
+    "Bluetooth": "",
+    "digital zoom": "",
+    "Video Res": "",
+    "HDR Video": "",
+    "ppi": "",
+    "Waterproof": "",
+    "Charging": "",
+    "Charging Max W": "",
+    "Connector Type": ""
+  },
+  {
+    "name": "iPad Pro 3",
+    "Release Year": "2018",
     "Chip": "A12X",
     "CPU speed": "",
     "Core": "Octa-Core",
-    "RAM": "",
+    "RAM": "4 GB",
     "Battery": "7812",
     "weight": "468",
     "Rear Cam": "12 MP",
@@ -834,5 +941,51 @@
     "Charging": "",
     "Charging Max W": "",
     "Connector Type": "USB-C"
+  },
+  {
+    "name": "iPad Pro 2",
+    "Release Year": "2017",
+    "Chip": "A10X",
+    "CPU speed": "",
+    "Core": "",
+    "RAM": "4 GB",
+    "Battery": "",
+    "weight": "",
+    "Rear Cam": "",
+    "Front Cam": "",
+    "Cellular": "LTE, GSM/EDGE",
+    "Wifi": "5",
+    "Bluetooth": "4.2",
+    "digital zoom": "",
+    "Video Res": "",
+    "HDR Video": "",
+    "ppi": "",
+    "Waterproof": "",
+    "Charging": "",
+    "Charging Max W": "",
+    "Connector Type": ""
+  },
+  {
+    "name": "iPad Pro 1",
+    "Release Year": "2015",
+    "Chip": "A9X",
+    "CPU speed": "2.26",
+    "Core": "Dual-Core",
+    "RAM": "2 GB",
+    "Battery": "10307",
+    "weight": "713",
+    "Rear Cam": "8 MP",
+    "Front Cam": "",
+    "Cellular": "LTE, GSM/EDGE",
+    "Wifi": "5",
+    "Bluetooth": "4",
+    "digital zoom": "",
+    "Video Res": "",
+    "HDR Video": "",
+    "ppi": "",
+    "Waterproof": "",
+    "Charging": "",
+    "Charging Max W": "",
+    "Connector Type": ""
   }
 ]
