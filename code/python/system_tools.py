@@ -40,19 +40,16 @@ def read_file(file_name: str) -> dict:
             if not path.is_file() or path.stat().st_size == 0:
                 return {}
             with open(path.as_posix(), mode="rb") as fp:
-                match file_format:
-                    case 'yaml':
-                        return yaml.load(fp, Loader=yaml.FullLoader)
-                    case 'json':
-                        return json.load(fp)
-                    case 'toml':
-                        return tomli.load(fp)
-                    case 'cfg':
-                        config = configparser.ConfigParser()
-                        return {i: v for i, v in enumerate(config.read())}
-                    case _:
-                        fp.close()
-                        raise f"unhandled file format '{file_format}'"
+                if file_format == 'yaml':
+                    return yaml.load(fp, Loader=yaml.FullLoader)
+                if file_format == 'json':
+                    return json.load(fp)
+                if file_format == 'toml':
+                    return tomli.load(fp)
+                if file_format == 'cfg':
+                    config = configparser.ConfigParser()
+                    return {i: v for i, v in enumerate(config.read())}
+                raise f"unhandled file format '{file_format}'"
     except Exception as e:
         raise e
 

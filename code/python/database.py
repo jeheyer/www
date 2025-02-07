@@ -1,6 +1,7 @@
 from sqlalchemy import Table, MetaData, update, select
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from os import path
+from pathlib import Path
 from system_tools import read_file
 
 
@@ -8,32 +9,35 @@ async def db_engine(db_name):
 
     db_config = {}
 
-    #pwd = path.realpath(path.dirname(__file__))
+    pwd = path.dirname(__file__)
 
-    for cfg_dir in ["..", "../..", "../../..", "../../../.."]:
-        try:
-            _ = cfg_dir + "/private/cfg/db_config.toml"
-            if db_config := read_file(_):
-                break
-        except Exception as e:
-            continue
-    assert db_config, "Database config file could not be opened"
+    cfg_dirs = []
+    for cfg_dir in ["/opt", "/mnt/web", "/home/web", "../../../../"]:
+        _ = path.join(pwd, cfg_dir, "./private/cfg/db_config.toml")
+        cfg_dirs.append(_)
+        print("looking for file:", _)
+        if p := Path(_):
+            if p.exists() and p.is_file():
+                if db_config := read_file(_):
+                    print("Found it!")
+                    break
+    assert db_config, f"Database config file could not be opened.  Looked here: {cfg_dirs}"
     if not (db_info := db_config.get(db_name)):
         raise Exception(f"Database config not found for '{db_name}'")
+
+    #print(db_info)
 
     # Connect to DB
     db_hostname = db_info.get('hostname', "127.0.0.1")
     db_username = db_info.get('username', "root")
     db_password = db_info.get('password', "")
     db_type = db_info.get('driver', "mysql").lower()
-    match db_type:
-        case "mysql":
-            db_driver = "mysql+asyncmy"
-        case _:
-            db_driver = None
-
+    db_driver = None
+    if db_type == "mysql":
+        db_driver = "mysql+asyncmy"
     try:
-        engine = create_async_engine("{}://{}:{}@{}/{}".format(db_driver, db_username, db_password, db_hostname, db_name))
+        _ = f"{db_driver}://{db_username}:{db_password}@{db_hostname}/{db_name}"
+        engine = create_async_engine(_)
         return engine
     except Exception as e:
         raise e

@@ -1,5 +1,3 @@
-starlette
-uvicorn
 #quart
 #hypercorn
 #flask
@@ -7,9 +5,11 @@ uvicorn
 #pymysql
 #py-postgresql
 sqlalchemy
-asyncpg
-asyncmy
-tomli
-tomli_w
-geoip2
-pyyaml
+#asyncpg
+#asyncmy
+tomli==2.2.1
+tomli_w==1.2.0
+geoip2==5.0.1
+PyYAML==6.0.2
+starlette==0.45.3
+uvicorn==0.34.0
