@@ -8,34 +8,33 @@ import traceback
 
 def get_client_ip(headers: dict = None) -> str:
 
-    try:
-        # Convert all keys to lower case for consistency
-        headers = {k.lower(): v for k, v in headers.items()}
+    # Convert all keys to lower case for consistency
+    headers = {k.lower(): v for k, v in headers.items()}
 
-        if x_appengine_user_ip := headers.get('http_x_appengine_user_ip'):
-            return x_appengine_user_ip.split(',')[0].strip()
+    if x_appengine_user_ip := headers.get('http_x_appengine_user_ip'):
+        return x_appengine_user_ip.split(',')[0].strip()
 
-        behind_cdn = False
-        if via := headers.get('http_via'):
+    behind_cdn = False
+    if via := headers.get('http_via'):
+        behind_cdn = True
+    else:
+        if "cloudfront" in headers.get('user_agent', "Unknown").lower():
             behind_cdn = True
-        else:
-            if "cloudfront" in headers.get('user_agent', "Unknown").lower():
-                behind_cdn = True
-        if not behind_cdn:
-            if x_real_ip := headers.get('http_x_real_ip'):
-                return x_real_ip
-        if x_forwarded_for := headers.get('http_x_forwarded_for'):
-            if "," in x_forwarded_for:
-                if ", " in x_forwarded_for:
-                    x_fwd_index = -3 if behind_cdn else -2
-                else:
-                    x_fwd_index = -2  # Stupid CloudRun
-                x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
-            return x_forwarded_for.strip()
-        return _.get('remote_addr', "127.0.0.1")
+    
+    if not behind_cdn:
+        if x_real_ip := headers.get('http_x_real_ip'):
+            return x_real_ip
+    
+    if x_forwarded_for := headers.get('http_x_forwarded_for'):
+        if "," in x_forwarded_for:
+            if ", " in x_forwarded_for:
+                x_fwd_index = -3 if behind_cdn else -2
+            else:
+                x_fwd_index = -2  # Stupid CloudRun
+            x_forwarded_for = x_forwarded_for.split(",")[x_fwd_index]
+        return x_forwarded_for.strip()
 
-    except Exception as e:
-        raise Exception(traceback.format_exc())
+    return headers.get('remote_addr', "127.0.0.1")
 
 
 def ping(headers: dict = None, request: any = None) -> dict:

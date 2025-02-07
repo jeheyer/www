@@ -1,13 +1,12 @@
-#FROM python:3.11-slim-bookworm
-#ARG DEBIAN_FRONTEND=noninteractive
-#RUN apt update && apt upgrade -y
-#RUN rm -Rf /var/lib/apt/lists/*
-FROM python:3.12-alpine
-MAINTAINER johnnylingo
+#FROM python:3.12-alpine
+FROM debian:bullseye
+ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /tmp
-COPY requirements.txt ./
-RUN pip3 install --upgrade pip
-RUN pip3 install -r requirements.txt
+COPY ./requirements.txt ./
+#RUN apk add build-base linux-headers
+RUN apt update && apt install -y python3-full python3-pip
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install -r requirements.txt
 ENV PORT=8000
 ENV APP_DIR=/opt/www/code/python
 ENV APP=app:app

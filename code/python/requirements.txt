@@ -1,12 +1,7 @@
-#quart
-#hypercorn
-#flask
-#gunicorn
-#pymysql
-#py-postgresql
-sqlalchemy
-#asyncpg
-#asyncmy
+aiohttp==3.11.12
+SQLAlchemy==2.0.38
+asyncpg==0.30.0
+asyncmy==0.2.10
 tomli==2.2.1
 tomli_w==1.2.0
 geoip2==5.0.1
