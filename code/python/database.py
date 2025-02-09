@@ -15,11 +15,11 @@ async def db_engine(db_name):
     for cfg_dir in ["/opt", "/mnt/web", "/home/web", "../../../../"]:
         _ = path.join(pwd, cfg_dir, "./private/cfg/db_config.toml")
         cfg_dirs.append(_)
-        print("looking for file:", _)
+        #print("looking for file:", _)
         if p := Path(_):
             if p.exists() and p.is_file():
                 if db_config := read_file(_):
-                    print("Found it!")
+                    #print("Found it!")
                     break
     assert db_config, f"Database config file could not be opened.  Looked here: {cfg_dirs}"
     if not (db_info := db_config.get(db_name)):
