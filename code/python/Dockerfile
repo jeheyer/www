@@ -1,12 +1,11 @@
-#FROM python:3.12-alpine
-FROM debian:bullseye
+FROM debian:bullseye-slim
 ARG DEBIAN_FRONTEND=noninteractive
 WORKDIR /tmp
 COPY ./requirements.txt ./
-#RUN apk add build-base linux-headers
 RUN apt update && apt install -y python3-full python3-pip
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install -r requirements.txt
+RUN rm -Rf /var/lib/apt/lists/*
 ENV PORT=8000
 ENV APP_DIR=/opt/www/code/python
 ENV APP=app:app

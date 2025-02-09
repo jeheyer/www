@@ -1,4 +1,4 @@
-FROM python:3.8.2-alpine
+FROM python:3.9-alpine
 MAINTAINER johnnylingo
 RUN ln -s /usr/bin/python3 /usr/bin/python
 WORKDIR /tmp
