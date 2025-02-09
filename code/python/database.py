@@ -21,7 +21,7 @@ async def db_engine(db_name):
                 if db_config := read_file(_):
                     #print("Found it!")
                     break
-    assert db_config, f"Database config file could not be opened.  Looked here: {cfg_dirs}"
+    assert db_config, FileNotFoundError(f"Database config file could not be opened.  Looked here: {cfg_dirs}")
     if not (db_info := db_config.get(db_name)):
         raise Exception(f"Database config not found for '{db_name}'")
 
