@@ -1,4 +1,4 @@
 service: teapotme
-runtime: python38
+runtime: python312
 env: standard
-entrypoint: uwsgi --http :$PORT --workers 3 --wsgi-file wsgi.py --callable application --enable-threads
+entrypoint: gunicorn -w 3 wsgi:application

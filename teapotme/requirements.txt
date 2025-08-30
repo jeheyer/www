@@ -1,5 +1,3 @@
-uwsgi
+gunicorn
 paste
 python-multipart
-pyyaml
-tomli

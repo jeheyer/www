@@ -14,7 +14,7 @@ FIELDS = {
     'x-forwarded-proto': "HTTP_X_FORWARDED_PROTO",
     'x-forwarded-host': "HTTP_X_FORWARDED_HOST",
     'server-software': "SERVER_SOFTWARE",
-    'server-port': "SERVER_PORT"
+    'server-port': "SERVER_PORT",
 }
 
 
@@ -54,3 +54,4 @@ def application(environ, start_response):
 
     start_response(code, headers)
     return [message.encode('utf-8')]
+
