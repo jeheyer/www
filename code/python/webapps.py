@@ -162,13 +162,13 @@ async def polls(db_name: str, db_join_table: str) -> list:
         raise Exception(traceback.format_exc())
 
 
-async def get_table(db_name: str, db_table: str = None, db_join_table: str = None, wall: str = None) -> list:
+async def get_table(db_name: str, db_table: str = None, db_join_table: str = None, **options) -> list:
 
     from database import db_engine, db_engine_dispose, db_get_table
 
     try:
         engine = await db_engine(db_name)
-        results = await db_get_table(engine, db_table)
+        results = await db_get_table(engine, db_table, db_join_table=db_join_table, **options)
         await db_engine_dispose(engine)
         return results
     except Exception as e:

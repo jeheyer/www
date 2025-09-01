@@ -52,24 +52,24 @@ async def db_engine_dispose(engine=None, session=None):
         await session.close()
 
 
-async def db_insert(engine, table_name, values={}):
+async def db_insert(engine, table_name, **values):
 
     try:
-        async with engine.begin() as conn:
-            table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
+        async with engine.begin() as _conn:
+            table = await _conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
             statement = table.insert().values(values)
-            result = await conn.execute(statement)
+            result = await _conn.execute(statement)
             return result
 
     except Exception as e:
         raise e
 
 
-async def db_update(engine, table_name, column_name, value, values={}):
+async def db_update(engine, table_name, column_name, value, **values):
 
     try:
-        async with engine.begin() as conn:
-            table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
+        async with engine.begin() as _conn:
+            table = await _conn.run_sync(lambda _conn: Table(table_name, MetaData(), autoload_with=_conn))
             #column_names = [c.name for c in table.columns]
             #val = update(table).values(values).where(table.c.column_name == value)
 
@@ -81,15 +81,15 @@ async def db_update(engine, table_name, column_name, value, values={}):
         raise e
 
 
-async def db_get_table(engine, table_name, join_table_name=None, where={}, order_by={}):
+async def db_get_table(engine, table_name, join_table_name=None, **options):
 
     try:
 
-        async with engine.begin() as conn:
-            table = await conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
+        async with engine.begin() as _conn:
+            table = await _conn.run_sync(lambda _conn: Table(table_name, MetaData(), autoload_with=_conn))
             column_names = [c.name for c in table.columns]
             if join_table_name:
-                join_table = await conn.run_sync(lambda conn: Table(join_table_name, MetaData(), autoload_with=conn))
+                join_table = await _conn.run_sync(lambda conn: Table(join_table_name, MetaData(), autoload_with=conn))
                 column_names.extend([c.name for c in join_table.columns])
 
         if join_table_name:
@@ -100,13 +100,14 @@ async def db_get_table(engine, table_name, join_table_name=None, where={}, order
                     .order_by(table.columns.num_votes.desc())
                 result = await session.execute(statement)
         else:
-            async with engine.connect() as conn:
-                if where:
-                    statement = table.select().where(table.columns.wall == where['wall'])\
-                        .order_by(table.columns.timestamp.desc())
-                    result = await conn.execute(statement)
+            async with engine.connect() as _conn:
+                #print("limit to colum wall matching:", options)
+                if wall := options.get('wall'):
+                    statement = table.select().where(table.columns.Wall == wall)
+                    #    .order_by(table.columns.timestamp.desc())
+                    result = await _conn.execute(statement)
                 else:
-                    result = await conn.execute(select(table))
+                    result = await _conn.execute(select(table))
 
         # Convert to dictionary with the column name as key
         rows = []
