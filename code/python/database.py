@@ -8,16 +8,16 @@ async def db_config(db_name) -> dict:
     _db_config = {}
 
     pwd = path.dirname(__file__)
-
+    print("pwd is:", pwd)
     cfg_dirs = []
     for cfg_dir in ["../..", "../../..", "../../../.."]:
-        _ = path.join(pwd, cfg_dir, "./private/cfg/db_config.toml")
+        _ = path.join(pwd, f"{cfg_dir}/private/cfg/db_config.toml")
         cfg_dirs.append(_)
-        #print("looking for file:", _)
+        print("looking for file:", _)
         if p := Path(_):
             if p.exists() and p.is_file():
                 if _db_config := read_file(_):
-                    #print("Found it!")
+                    print("Found it!")
                     break
     assert _db_config, FileNotFoundError(f"Database config file could not be opened.  Looked here: {cfg_dirs}")
     if not (db_info := _db_config.get(db_name)):
