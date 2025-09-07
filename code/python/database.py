@@ -12,7 +12,7 @@ async def db_engine(db_name):
     pwd = path.dirname(__file__)
 
     cfg_dirs = []
-    for cfg_dir in ["/opt", "/opt/web", "/mnt/web", "/home/web", "../../../../"]:
+    for cfg_dir in ["/mnt/web", "/opt/web", "/home/web", "../../../.."]:
         _ = path.join(pwd, cfg_dir, "./private/cfg/db_config.toml")
         cfg_dirs.append(_)
         #print("looking for file:", _)
