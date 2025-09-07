@@ -1,13 +1,11 @@
-from sqlalchemy import Table, MetaData, update, select
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from os import path
 from pathlib import Path
 from system_tools import read_file
 
 
-async def db_engine(db_name):
+async def db_config(db_name) -> dict:
 
-    db_config = {}
+    _db_config = {}
 
     pwd = path.dirname(__file__)
 
@@ -18,16 +16,21 @@ async def db_engine(db_name):
         #print("looking for file:", _)
         if p := Path(_):
             if p.exists() and p.is_file():
-                if db_config := read_file(_):
+                if _db_config := read_file(_):
                     #print("Found it!")
                     break
-    assert db_config, FileNotFoundError(f"Database config file could not be opened.  Looked here: {cfg_dirs}")
-    if not (db_info := db_config.get(db_name)):
+    assert _db_config, FileNotFoundError(f"Database config file could not be opened.  Looked here: {cfg_dirs}")
+    if not (db_info := _db_config.get(db_name)):
         raise Exception(f"Database config not found for '{db_name}'")
 
-    #print(db_info)
+    return db_info
+
+async def db_engine(db_name):
+
+    from sqlalchemy.ext.asyncio import create_async_engine
 
     # Connect to DB
+    db_info = await db_config(db_name)
     db_hostname = db_info.get('hostname', "127.0.0.1")
     db_username = db_info.get('username', "root")
     db_password = db_info.get('password', "")
@@ -54,6 +57,8 @@ async def db_engine_dispose(engine=None, session=None):
 
 async def db_insert(engine, table_name, **values):
 
+    from sqlalchemy import Table, MetaData
+
     try:
         async with engine.begin() as _conn:
             table = await _conn.run_sync(lambda conn: Table(table_name, MetaData(), autoload_with=conn))
@@ -66,6 +71,8 @@ async def db_insert(engine, table_name, **values):
 
 
 async def db_update(engine, table_name, column_name, value, **values):
+
+    from sqlalchemy import Table, MetaData
 
     try:
         async with engine.begin() as _conn:
@@ -82,6 +89,9 @@ async def db_update(engine, table_name, column_name, value, **values):
 
 
 async def db_get_table(engine, table_name, join_table_name=None, **options):
+
+    from sqlalchemy.ext.asyncio import AsyncSession
+    from sqlalchemy import Table, MetaData, select
 
     try:
 

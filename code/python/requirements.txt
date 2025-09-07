@@ -7,9 +7,9 @@ tomli_w==1.2.0
 geoip2==5.0.1
 PyYAML==6.0.2
 starlette==0.45.3
-#uvicorn==0.34.0
-quart
-hypercorn
+uvicorn==0.34.0
+#quart
+#hypercorn
 greenlet==3.1.1
 setuptools
 wheel
