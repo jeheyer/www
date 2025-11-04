@@ -1,4 +1,4 @@
-from os import path
+#from os import path
 from pathlib import Path
 from system_tools import read_file
 
@@ -7,18 +7,21 @@ async def db_config(db_name) -> dict:
 
     _db_config = {}
 
-    pwd = path.dirname(__file__)
-    print("pwd is:", pwd)
+    #pwd = path.dirname(__file__)
+    pwd = Path(__file__).parent
+    #print("pwd is:", pwd)
     cfg_dirs = []
     for cfg_dir in ["../..", "../../..", "../../../.."]:
-        _ = path.join(pwd, f"{cfg_dir}/private/cfg/db_config.toml")
+        #_ = path.join(pwd, f"{cfg_dir}/private/cfg/db_config.toml")
+        _ = pwd.joinpath(f"{cfg_dir}/private/cfg/db_config.toml")
         cfg_dirs.append(_)
-        print("looking for file:", _)
-        if p := Path(_):
-            if p.exists() and p.is_file():
-                if _db_config := read_file(_):
-                    print("Found it!")
-                    break
+        #print("looking for file:", _)
+        #if p := Path(_):
+        if _.exists() and _.is_file():
+            if _db_config := read_file(str(_)):
+            #if _db_config := _.read_text():
+                #print("Found it!")
+                break
     assert _db_config, FileNotFoundError(f"Database config file could not be opened.  Looked here: {cfg_dirs}")
     if not (db_info := _db_config.get(db_name)):
         raise Exception(f"Database config not found for '{db_name}'")

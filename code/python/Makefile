@@ -1,22 +1,40 @@
-HOST := gcr.io
+SERVICE = python
+HOST := us-docker.pkg.dev
+REPO := cloudbuild
+RUNTIME := python313
 REGION := us-central1
-PROJECT_ID := my-project
-REPO := my-repo
-SERVICE := python
+PORT := 8080
 
 include Makefile.env
 
-all: gcp-setup cloud-build cloud-run-deploy
+IMAGE = $(HOST)/$(PROJECT_ID)/$(REPO)/$(SERVICE):latest
+
+all: docker gcp
+docker: docker-build docker-run
+gcp: gcp-setup app-engine cloud-function cloud-run
+
+docker-build:
+	docker build -t $(SERVICE) .
+
+docker-run:
+	docker run -p 31280\:$(PORT) $(SERVICE)
 
 gcp-setup:
 	gcloud config set project $(PROJECT_ID)
+	gcloud config set core/project $(PROJECT_ID)
+	gcloud config set compute/region $(REGION)
+
+app-engine:
+	gcloud app deploy ./app.yaml
+
+cloud-function:
+	gcloud config set functions/region $(REGION)
+	gcloud functions deploy $(SERVICE) --runtime=$(RUNTIME) --region=$(REGION) \
+	--gen2 --source=. --entry-point=ping --trigger-http --memory=512MB --allow-unauthenticated
 
 cloud-build:
-	#gcloud auth configure-docker $(HOST)
-	#gcloud builds submit --tag gcr.io/$(PROJECT_ID)/$(SERVICE_NAME) .
-	gcloud builds submit --tag $(HOST)/$(PROJECT_ID)/$(REPO)/$(SERVICE):latest .
+	gcloud builds submit --tag $(IMAGE) .
 
-cloud-run-deploy:
+cloud-run:
 	gcloud config set run/region $(REGION)
-	#gcloud run deploy $(SERVICE_NAME) --image gcr.io/$(GCP_PROJECT_ID)/$(SERVICE_NAME) --allow-unauthenticated
-	gcloud run deploy $(SERVICE) --image $(HOST)/$(PROJECT_ID)/$(REPO)/$(SERVICE):latest
+	gcloud run deploy $(SERVICE) --image $(IMAGE) --port $(PORT) --platform=managed --allow-unauthenticated
