@@ -16,8 +16,7 @@ def application(environ, start_response):
 
     try:
 
-        uri = environ.get('REQUEST_URI')
-        if not uri or uri == '':
+        if not (uri := environ.get('REQUEST_URI')):
             uri = environ.get('RAW_URI', '/')
         path = uri.split('?')[0]
 
