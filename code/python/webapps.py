@@ -258,7 +258,7 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
         if num_votes > 0:
             result = await db_update(
                 engine,
-                table_name="pools",
+                table_name="polls",
                 column_name="choice_id",
                 value = choice_id,
                 **row
@@ -266,7 +266,7 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
         else:
             result = await db_insert(
                 engine,
-                table_name="pools",
+                table_name="polls",
                 poll_name = poll_name,
                 choice_id = choice_id,
                 num_votes = num_votes
