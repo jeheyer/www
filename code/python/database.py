@@ -117,11 +117,7 @@ async def db_get_table(engine, table_name, join_table_name=None, **options):
                     result = await _conn.execute(select(table))
 
         # Convert to dictionary with the column name as key
-        rows = []
-        for row in result:
-            rows.append(dict(zip(column_names, row)))
-
-        return rows
+        return [ dict(zip(column_names, _)) for _ in result ]
 
     except Exception as e:
         raise e
