@@ -86,7 +86,7 @@ async def _graffiti(req: Request):
         db_table = "graffiti"
         wall = req.path_params.get('wall')
         _ = await create_task(get_table(db_name, db_table, db_join_table=None, **{'wall': wall}))
-        #print(_)
+        print(_)
         data = []
         for row in _:
             data.append({
