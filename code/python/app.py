@@ -85,15 +85,9 @@ async def _graffiti(req: Request):
         db_name = req.path_params.get('db_name')
         db_table = "graffiti"
         wall = req.path_params.get('wall')
-        _ = await create_task(get_table(db_name, db_table, db_join_table=None, **{'wall': wall}))
-        print(_)
-        data = []
-        for row in _:
-            data.append({
-                #'timestamp': row['timestamp'].strftime('%Y-%m-%d %H:%M:%S'),
-                'name': row['Name'],
-                'text': row['Text'],
-            })
+        table = await create_task(get_table(db_name, db_table, db_join_table=None, **{'wall': wall}))
+        #print(table)
+        data = [{'name': row['name'], 'text': row['text']} for row in table]
         return JSONResponse(content=data, headers=RESPONSE_HEADERS)
 
     except Exception as e:
