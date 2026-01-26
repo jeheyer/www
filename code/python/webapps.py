@@ -228,8 +228,14 @@ async def graffiti_post(db_name: str, wall: str, graffiti_url: str = None, name:
 
     try:
         engine = await db_engine(db_name)
-        row = {'wall': wall, 'name': name, 'text': text}
-        result = await db_insert(engine, "graffiti", values=row)
+        #row = {'wall': wall, 'name': name, 'text': text}
+        result = await db_insert(
+            engine,
+            "graffiti",
+            wall=wall,
+            name=name,
+            text=text,
+        )
         await db_engine_dispose(engine)
         return f"{graffiti_url}?wall={wall}"
     except Exception as e:
@@ -254,14 +260,23 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
             if int(_.get('choice_id') == choice_id):
                 num_votes = int(_.get('num_votes', 0))
                 break
-        row.update({
-            'num_votes': num_votes + 1,
-        })
+        num_votes = num_votes + 1
         if num_votes > 0:
-            result = await db_update(engine, "polls", "choice_id", choice_id, values=row)
+            result = await db_update(
+                engine,
+                "pools",
+                choice_id = choice_id,
+                poll_name = poll_name,
+                num_votes=num_votes,
+            )
         else:
-            result = await db_insert(engine, "polls", values=row)
-
+            result = await db_insert(
+                engine,
+               "polls",
+                poll_name = poll_name,
+                choice_id = choice_id,
+                num_votes = num_votes
+            )
         return poll_url
 
     except Exception as e:
