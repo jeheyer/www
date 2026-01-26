@@ -20,11 +20,11 @@ def get_client_ip(headers: dict = None) -> str:
     else:
         if "cloudfront" in headers.get('user_agent', "Unknown").lower():
             behind_cdn = True
-    
+
     if not behind_cdn:
         if x_real_ip := headers.get('http_x_real_ip'):
             return x_real_ip
-    
+
     if x_forwarded_for := headers.get('http_x_forwarded_for'):
         if "," in x_forwarded_for:
             if ", " in x_forwarded_for:
@@ -222,17 +222,14 @@ async def graffiti_post(db_name: str, wall: str, graffiti_url: str = None, name:
 
     from database import db_engine, db_engine_dispose, db_insert
 
-    if not graffiti_url:
-        graffiti_url = "http://localhost"
-    if not name:
-        name = "Anonymous Coward"
-    if not text:
-        text = "I have nothing to say"
+    graffiti_url = "http://localhost" if not graffiti_url else graffiti_url
+    name = "Anonymous Coward" if not name else name
+    text = "I have nothing to say" if not text else text
 
     try:
         engine = await db_engine(db_name)
         row = {'wall': wall, 'name': name, 'text': text}
-        result = await db_insert(engine, "graffiti", row)
+        result = await db_insert(engine, "graffiti", values=row)
         await db_engine_dispose(engine)
         return f"{graffiti_url}?wall={wall}"
     except Exception as e:
@@ -243,58 +240,27 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
 
     from database import db_engine, db_engine_dispose, db_get_table, db_insert, db_update
 
-    if not poll_url:
-        poll_url = "http://localhost"
-
     poll_url = f"{poll_url}?poll_name={poll_name}&poll_desc={poll_desc}"
-
     choice_id = int(choice_id)
     if choice_id < 1:
         return poll_url
 
-    db_row = {'poll_name': poll_name, 'choice_id': choice_id, 'num_votes': 0}
     try:
-
-        # Connect to database
         engine = await db_engine(db_name)
-
-        # Check if there's existing votes for this choice
+        row = {'poll_name': poll_name, 'choice_id': choice_id, 'num_votes': 0}
         num_votes = 0
         results = await db_get_table(engine, "polls", join_table_name=poll_name)
         for _ in results:
-            if int(_['choice_id']) == choice_id:
-                num_votes = _.get('num_votes', 0)
+            if int(_.get('choice_id') == choice_id):
+                num_votes = int(_.get('num_votes', 0))
                 break
-
-        # Update the database
-        db_row['num_votes'] = num_votes + 1
+        row.update({
+            'num_votes': num_votes + 1,
+        })
         if num_votes > 0:
-            result = await db_update(engine, "polls", "choice_id", choice_id, db_row)
+            result = await db_update(engine, "polls", "choice_id", choice_id, values=row)
         else:
-            result = await db_insert(engine, "polls", db_row)
-        """
-        session = orm.sessionmaker(bind=engine)()
-
-        table = Table("polls", MetaData(), autoload_with=engine)
-
-        # See if this choice has existing votes
-        result = session.query(table.columns.num_votes)\
-            .filter(table.columns.poll_name == poll_name)\
-            .filter(table.columns.choice_id == choice_id)\
-            .all()
-        if len(result) > 0:
-            num_votes = result[0][0] + 1
-            statement = table.update()\
-                .filter(table.columns.poll_name == poll_name)\
-                .filter(table.columns.choice_id == choice_id)\
-                .values(num_votes=num_votes)
-        else:
-            statement = table.insert().values(poll_name=poll_name, choice_id=choice_id, num_votes=1)
-
-        result = session.execute(statement)
-        """
-
-        await db_engine_dispose(engine)
+            result = await db_insert(engine, "polls", values=row)
 
         return poll_url
 
@@ -302,7 +268,7 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
         raise Exception(traceback.format_exc())
 
 
-def get_geoip_info(geoiplist: list = ["127.0.0.1"]) -> list:
+def get_geoip_info(geoiplist: tuple = ("127.0.0.1")) -> list:
 
     from geoip import GeoIPList
 

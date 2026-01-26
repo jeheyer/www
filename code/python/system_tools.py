@@ -32,20 +32,20 @@ def get_dns_servers_from_token(token="testing1234") -> dict:
 
 def read_file(file_name: str) -> dict:
 
-    if path := pathlib.Path(file_name):
-        if not path.is_file():
-            open(path, 'a').close()  # Create an empty file
-        if path.stat().st_size == 0:
+    if file_path := pathlib.Path(file_name):
+        if not file_path.is_file():
+            file_path.open(mode="a", encoding='UTF-8').close()  # Create an empty file
+        if file_path.stat().st_size == 0:
             return {}  # File exists, but is empty
     else:
-        raise f"Error occurred while reading '{path}'"
+        raise f"Error occurred while reading '{file_path}'"
 
-    file_format = file_name.split('.')[-1].lower()  # Auto-determine file type by examining extension
+    file_format = file_path.suffix.replace('.', '').lower()  # Auto-determine file type by examining extension
 
     try:
-        if not path.is_file() or path.stat().st_size == 0:
+        if not file_path.is_file() or file_path.stat().st_size == 0:
             return {}
-        contents = path.read_text(encoding='utf-8')
+        contents = file_path.read_text(encoding='utf-8')
         if file_format == 'yaml':
             return yaml.load(contents, Loader=yaml.FullLoader)
         if file_format == 'json':
@@ -54,12 +54,12 @@ def read_file(file_name: str) -> dict:
             return tomli.loads(contents)
         if file_format == 'cfg':
             config = configparser.ConfigParser()
-            return {i: v for i, v in enumerate(config.read(path))}
+            return {i: v for i, v in enumerate(config.read(file_path))}
         raise f"unhandled file format '{file_format}'"
     except Exception as e:
         raise e
 
-    return {}
+    raise PathNotFound("Could not read file:", file_path)
 
 
 def ConvertToDict(contents: list, file_type: str) -> list:

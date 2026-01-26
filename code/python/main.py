@@ -20,6 +20,7 @@ def application(environ, start_response):
             uri = environ.get('RAW_URI', '/')
         path = uri.split('?')[0]
 
+        _ = None
         query_params = {}
         if '?' in uri:
             query_params = dict(parse.parse_qsl(parse.urlsplit(uri).query))
