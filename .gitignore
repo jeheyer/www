@@ -3,4 +3,5 @@ __pycache__/
 *.pyc
 *.env
 *.mmdb
-db_config.toml
+*.toml
+*.yaml
