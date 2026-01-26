@@ -110,7 +110,7 @@ async def db_get_table(engine, table_name, join_table_name=None, **options):
             async with engine.connect() as _conn:
                 #print("limit to colum wall matching:", options)
                 if wall := options.get('wall'):
-                    statement = table.select().where(table.columns.Wall == wall)
+                    statement = table.select().where(table.columns.wall == wall)
                     #    .order_by(table.columns.timestamp.desc())
                     result = await _conn.execute(statement)
                 else:
