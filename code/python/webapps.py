@@ -266,8 +266,8 @@ async def poll_vote(db_name: str, poll_name: str, poll_url: str, poll_desc: str,
                 engine,
                 table_name="pools",
                 column_name="choice_id",
-                choice_id = choice_id,
                 poll_name = poll_name,
+                choice_id = choice_id,
                 num_votes = num_votes,
             )
         else:
