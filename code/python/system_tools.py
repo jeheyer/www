@@ -1,9 +1,5 @@
 import re
 import pathlib
-import tomli
-import yaml
-import json
-import configparser
 
 
 def get_dns_servers_from_token(token="testing1234") -> dict:
@@ -31,6 +27,11 @@ def get_dns_servers_from_token(token="testing1234") -> dict:
 
 
 def read_file(file_name: str) -> dict:
+
+    import yaml
+    import json
+    import configparser
+    import tomli
 
     if file_path := pathlib.Path(file_name):
         if not file_path.is_file():
