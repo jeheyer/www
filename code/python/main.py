@@ -10,41 +10,43 @@ from webapps import *
 # WSGI entry point
 def application(environ, start_response):
 
-    _ = None
+    data = None
     code = "200 OK"
     headers = [('Content-type', 'text/plain')]
 
     try:
-
-        if not (uri := environ.get('REQUEST_URI')):
-            uri = environ.get('RAW_URI', '/')
+        uri = '/'
+        for var in ('REQUEST_URI', 'SCRIPT_NAME', 'RAW_URI'):
+            if uri := environ.get(var):
+                break
         path = uri.split('?')[0]
+        print("Path:", path)
 
-        _ = None
+        data = None
         query_params = {}
         if '?' in uri:
             query_params = dict(parse.parse_qsl(parse.urlsplit(uri).query))
 
         if "/ping" in path:
-            _ = ping(environ)
+            data = ping(environ)
 
         if "/mortgage" in path:
-            _ = mortgage(query_params)
+            data = mortgage(query_params)
 
         if "/get_table" in path:
             db_name = path.split('/')[-2]
             db_table = path.split('/')[-1]
-            _ = run(get_table(db_name, db_table))
+            data = run(get_table(db_name, db_table))
 
         if "/polls/" in path:
             db_name = path.split('/')[-2]
             db_join_table = path.split('/')[-1]
-            _ = run(polls(db_name, db_join_table))
+            data = run(polls(db_name, db_join_table))
 
         if "/graffiti/" in path:
             db_name = path.split('/')[-2]
             wall = path.split('/')[-1]
-            _ = run(graffiti(db_name, wall))
+            data = run(graffiti(db_name, wall))
 
         if "/geoip" in path:
             ip_list = []
@@ -52,14 +54,14 @@ def application(environ, start_response):
                 ip_list = path.replace("/geoip/", "").split('/')
             if len(ip_list) < 1:
                 ip_list = [ get_client_ip(environ) ]
-            _ = get_geoip_info(ip_list)
+            data = get_geoip_info(ip_list)
 
         if "/getdnsservers" in path:
             token = path.split("/")[-1]
-            _ = get_dns_servers(token)
+            data = get_dns_servers(token)
 
-        if _:
-            output = dumps(_, default=str, indent=2)
+        if data:
+            output = dumps(data, default=str, indent=2)
             headers = [
                 ('Access-Control-Allow-Origin', '*'),
                 ('Cache-Control', 'no-cache, no-store'),
@@ -68,7 +70,7 @@ def application(environ, start_response):
                 ('Content-Length', str(len(output)))
             ]
         else:
-            output = "Unknown call"
+            output = "No Data Returned"
 
     except Exception as e:
 
