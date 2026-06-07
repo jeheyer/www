@@ -2,7 +2,7 @@ import pathlib
 from system_tools import read_file
 
 PWD = pathlib.Path(__file__).parent
-CFG_DIRS = ["../..", "../../..", "../../../.."]
+CFG_DIRS = ["..", "../..", "../../..", "../../../.."]
 
 async def db_config(db_name) -> dict:
 
