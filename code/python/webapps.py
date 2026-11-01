@@ -4,6 +4,7 @@ import platform
 import socket
 import sys
 import traceback
+import time
 
 
 def get_client_ip(headers: dict = None) -> str:
@@ -225,10 +226,11 @@ async def graffiti_post(db_name: str, wall: str, graffiti_url: str = None, name:
     graffiti_url = "http://localhost" if not graffiti_url else graffiti_url
     name = "Anonymous Coward" if not name else name
     text = "I have nothing to say" if not text else text
+    timestamp = time.time()
 
     try:
         engine = await db_engine(db_name)
-        row = {'wall': wall, 'name': name, 'text': text}
+        row = {'wall': wall, 'name': name, 'text': text, 'timestamp': timestamp}
         result = await db_insert(engine, table_name="graffiti", **row)
         await db_engine_dispose(engine)
         return f"{graffiti_url}?wall={wall}"
